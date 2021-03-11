@@ -1,10 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
 import { Col } from "react-bootstrap";
-import { p2e } from "../Helpers/general";
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import RoomIcon from '@material-ui/icons/Room';
 
