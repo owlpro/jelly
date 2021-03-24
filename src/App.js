@@ -5,7 +5,28 @@ class App extends Component {
     render() {
         return (
             <div>
-                <SmartCrud route={'http://192.168.100.98:8080/api/v4/products'} columns={[]} filters={[]} />
+                <SmartCrud route={'http://localhost:8000/api/v1/products'} columns={[
+                    {
+                        selector: "key",
+                        title: "key",
+                    },
+                    {
+                        selector: "title",
+                        label: "title",
+                    },
+                    {
+                        selector: "subtitle",
+                        label: "subtitle",
+                    },
+                    {
+                        selector: "description",
+                        label: "description",
+                    },
+                    {
+                        selector: "amount",
+                        label: "amount",
+                    },
+                ]} filters={[]} />
             </div>
         );
     }

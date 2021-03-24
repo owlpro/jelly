@@ -27,6 +27,7 @@ import { DangerAlert, SuccessAlert, WarningAlert } from "./Helpers/alert";
 import { select, setToObject } from "./Helpers/general";
 import SCImage from "./Inputs/SCImage";
 import SCIncrements from "./Inputs/SCIncrements";
+import "./styles.scss";
 
 class SmartCrud extends Component {
     state = {
@@ -394,7 +395,7 @@ class SmartCrud extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className="smartcrud_wrapper">
                 <div className="smartcrud_tabs_wrapper">
                     <Tabs value={this.state._tab} onChange={this.onChangeTab} aria-label="simple tabs example">
                         <Tab label={
@@ -423,7 +424,7 @@ class SmartCrud extends Component {
                         {this.renderCreateSection()}
                     </TabPanel>
                 ) : null}
-            </Fragment>
+            </div>
         )
     }
 }
