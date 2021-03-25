@@ -369,7 +369,7 @@ class Media extends Component {
 
         // TODO || make config
         // return encodeURI(config.baseUrl + "" + (child ? child.path : media.path));
-        return encodeURI(config.baseUrl + "" + (child ? child.path : media.path));
+        return "";
     }
 
     onMediaClick = item => () => {

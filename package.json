@@ -4,6 +4,8 @@
   "private": false,
   "dependencies": {
     "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.12.13",
     "@date-io/jalaali": "^2.10.8",
     "@material-ui/core": "^4.11.3",
@@ -14,6 +16,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
     "jalali-moment": "^3.3.10",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
@@ -24,6 +27,7 @@
     "react-bootstrap": "^1.5.2",
     "react-color": "^2.19.3",
     "react-csv": "^2.0.3",
+    "react-custom-scrollbars": "^4.2.1",
     "react-data-table-component": "^6.11.7",
     "react-dom": "^17.0.1",
     "react-file-drop": "^3.1.2",
@@ -42,7 +46,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "wp-start": "webpack --mode development",
+    "wp-dev": "webpack-dev-server --mode development --open",
+    "wp-build": "webpack --mode production"
   },
   "eslintConfig": {
     "extends": [
@@ -61,5 +68,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^5.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "3.7.1"
   }
 }

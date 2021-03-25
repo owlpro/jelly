@@ -3,3 +3,5 @@
 
 <!-- first `npm install @babel/plugin-proposal-class-properties --save-dev`
  -->
+
+yarn add @babel/plugin-proposal-class-properties --dev
