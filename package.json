@@ -1,6 +1,6 @@
 {
   "name": "jelly-smart-crud",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": false,
   "main": "src/index.js",
   "dependencies": {
