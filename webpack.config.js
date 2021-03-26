@@ -1,9 +1,10 @@
 const path = require('path')
 module.exports = {
-    entry: './src/index.js',
+    devtool: 'inline-source-map',
+    entry: './src/module.js',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'index_bundle.js',
+        filename: 'module.bundle.js',
     },
     module: {
         rules: [
@@ -15,8 +16,15 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/,
+                test: /\.css$|\.scss$/,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    publicPath: 'built',
+                },
             },
         ],
     },
