@@ -4,9 +4,9 @@ module.exports = {
     entry: './src/module.js',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'index.js',
+        filename: 'jelly.smart.crud.js',
         library: 'jelly-smart-crud',
-        libraryTarget: 'umd',
+        libraryTarget: 'var',
     },
     module: {
         rules: [
