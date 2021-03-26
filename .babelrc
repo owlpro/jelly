@@ -6,8 +6,6 @@
             {
                 "loose": true
             }
-        ],
-        "transform-object-rest-spread",
-        "transform-react-jsx"
+        ]
     ]
 }

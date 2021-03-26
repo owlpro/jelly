@@ -1,11 +1,10 @@
 const path = require('path')
 module.exports = {
-    // devtool: 'inline-source-map',
     entry: './src/module.js',
+    mode: 'production',
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '/lib'),
         filename: 'index.bundle.js',
-        library: 'jelly-smart-crud',
         libraryTarget: 'commonjs2',
     },
     module: {

@@ -2,6 +2,7 @@
   "name": "jelly-smart-crud",
   "version": "1.0.15",
   "private": false,
+  "main": "src/index.js",
   "dependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
