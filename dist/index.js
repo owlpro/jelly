@@ -1,2 +1,2 @@
-export const foo = 'test bar'
-export const ann = 'aqa'
+export * as output from "./module.bundle"
+// export output
