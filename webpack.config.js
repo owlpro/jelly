@@ -1,10 +1,10 @@
 const path = require('path')
 module.exports = {
-    entry: './src/module.js',
+    entry: './src/index.js',
     mode: 'production',
     output: {
         path: path.join(__dirname, '/lib'),
-        filename: 'index.bundle.js',
+        filename: 'index.js',
         libraryTarget: 'commonjs2',
     },
     module: {
