@@ -1,2 +1,2 @@
-export * as output from "./module.bundle"
-// export output
+import { SmartCrud, SmartCrudProvider } from './module.bundle'
+export { SmartCrud, SmartCrudProvider }
