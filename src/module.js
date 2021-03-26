@@ -1,4 +1,9 @@
-import SmartCrud from './package/SmartCrud'
-import SmartCrudProvider from './package/SmartCrudProvider'
+const SmartCrudProvider = require('./package/SmartCrudProvider.js').default
+// const SmartCrud = require('./package/SmartCrud.js').default
 
-export { SmartCrudProvider, SmartCrud }
+module.exports = SmartCrudProvider
+
+// module.exports = {
+//     SmartCrudProvider,
+//     SmartCrud,
+// }

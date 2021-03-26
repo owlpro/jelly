@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as $ from 'jquery'
@@ -42,7 +41,7 @@ import MoreItems from '../Components/MoreItems'
 import Tags from '../Relations/MorphMany/Tags'
 import Attachments from '../Relations/MorphMany/Attachments'
 import Checkbox from '@material-ui/core/Checkbox'
-import { CSVLink, CSVDownload } from 'react-csv'
+import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
@@ -1256,10 +1255,10 @@ class SmartCrudDataTable extends Component {
                 },
             },
         }
-        let merchants = this.props.smartcrud.merchants.map((merchant) => ({
-            label: merchant.title,
-            value: merchant.id,
-        }))
+        // let merchants = this.props.smartcrud.merchants.map((merchant) => ({
+        //     label: merchant.title,
+        //     value: merchant.id,
+        // }))
 
         this.row = 1
         let printColumns = this.state.columns.filter((item) => item.selector !== '__more_items__' && item.selector !== '__select__')
@@ -1313,6 +1312,8 @@ class SmartCrudDataTable extends Component {
                                                 </UIButton>
                                             )
                                         }
+
+                                        return null
                                     })}
                                 </div>
                                 {this.props.columns.filter((item) => item.sortableFilter).length ? (
@@ -1730,7 +1731,7 @@ class SmartCrudDataTable extends Component {
                                                     </Row>
                                                 )
                                             default:
-                                                break
+                                                return null
                                         }
                                     })}
                                 </div>

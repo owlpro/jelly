@@ -1,12 +1,12 @@
 const path = require('path')
 module.exports = {
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     entry: './src/module.js',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'jelly.smart.crud.js',
+        filename: 'index.bundle.js',
         library: 'jelly-smart-crud',
-        libraryTarget: 'var',
+        libraryTarget: 'commonjs2',
     },
     module: {
         rules: [
@@ -17,6 +17,17 @@ module.exports = {
                     loader: 'babel-loader',
                 },
             },
+            // {
+            //     test: /\.js$/,
+            //     include: path.resolve(__dirname, 'src'),
+            //     exclude: /(node_modules|bower_components|build)/,
+            //     use: {
+            //         loader: 'babel-loader',
+            //         options: {
+            //             presets: ['env'],
+            //         },
+            //     },
+            // },
             {
                 test: /\.css$|\.scss$/,
                 use: ['style-loader', 'css-loader'],
