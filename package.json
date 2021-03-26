@@ -1,6 +1,6 @@
 {
   "name": "jelly-smart-crud",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "private": false,
   "dependencies": {
     "@babel/cli": "^7.13.10",
