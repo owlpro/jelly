@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { SmartCrud } from './module'
+// import { SmartCrud } from './module'
 
 class App extends Component {
     render() {
         return (
             <div>
                 hello world this is package
-                <SmartCrud
+                {/* <SmartCrud
                     route={'http://localhost:8000/api/v1/products'}
                     columns={[
                         {
@@ -31,7 +31,7 @@ class App extends Component {
                         },
                     ]}
                     filters={[]}
-                />
+                /> */}
             </div>
         )
     }
