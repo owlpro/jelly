@@ -1,6 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-const webpack = require('webpack');
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'production',
@@ -41,7 +41,9 @@ module.exports = {
     resolve: {
         alias: {
             react: path.resolve('./node_modules/react'),
+            'react-dom': path.resolve('./node_modules/react-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
+            '@material-ui': path.resolve('./node_modules/@material-ui'),
         },
     },
     target: 'node',
