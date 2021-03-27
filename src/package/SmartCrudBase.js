@@ -27,7 +27,6 @@ import { DangerAlert, SuccessAlert, WarningAlert } from './Helpers/alert'
 import { select, setToObject } from './Helpers/general'
 import SCImage from './Inputs/SCImage'
 import SCIncrements from './Inputs/SCIncrements'
-import './Assets/scss/styles.scss'
 
 class SmartCrudBase extends Component {
     state = {
