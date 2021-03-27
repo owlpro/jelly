@@ -5,7 +5,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'module.bundle.js',
-        libraryTarget: 'commonjs2',
+        libraryTarget: 'amd',
         library: 'jelly-smart-crud',
         // libraryTarget: 'umd',
         publicPath: '/dist/',
