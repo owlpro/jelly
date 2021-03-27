@@ -1859,7 +1859,6 @@ class SmartCrudDataTable extends Component {
 
                                 {this.props.columns.filter((item) => item.sortableFilter).length || (this.props.filters && this.props.filters.length) ? (
                                     <UIButton
-                                        variant="outline-info"
                                         variant="contained"
                                         color="primary"
                                         className="mui_filter_btn mr-2"

@@ -1,5 +1,5 @@
-import { Box, Button, CircularProgress, IconButton, TextField } from '@material-ui/core'
 import React, { Component, Fragment } from 'react'
+import { Box, Button, CircularProgress, IconButton, TextField } from '@material-ui/core'
 import { Col, Modal, Row } from 'react-bootstrap'
 import { FileDrop } from 'react-file-drop'
 import { connect } from 'react-redux'
