@@ -2,7 +2,13 @@
     "name": "jelly-smart-crud",
     "version": "1.0.23",
     "private": false,
-    "main": "index.js",
+    "main": "./dist/module.bundle.js",
+    "peerDependencies": {
+        "antd": "^4.14.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "styled-components": "^5.2.1"
+    },
     "dependencies": {
         "@babel/cli": "^7.13.10",
         "@babel/core": "^7.13.10",
@@ -71,6 +77,7 @@
         ]
     },
     "devDependencies": {
+        "antd": "^4.14.1",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -85,11 +92,5 @@
         "webpack": "^4.44.2",
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "3.7.1"
-    },
-    "peerDependencies": {
-        "antd": "^3.25.0",
-        "styled-components": "^4.4.1",
-        "react": "^16.11.0",
-        "react-dom": "^16.11.0"
     }
 }

@@ -5,9 +5,9 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'module.bundle.js',
-        // libraryTarget: 'commonjs2',
+        libraryTarget: 'commonjs2',
         library: 'jelly-smart-crud',
-        libraryTarget: 'umd',
+        // libraryTarget: 'umd',
         publicPath: '/dist/',
         umdNamedDefine: true,
     },
@@ -32,6 +32,12 @@ module.exports = {
                 },
             },
         ],
+    },
+    resolve: {
+        alias: {
+            react: path.resolve(__dirname, './node_modules/react'),
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+        },
     },
     externals: {
         // Don't bundle react or react-dom
