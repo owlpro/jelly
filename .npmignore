@@ -1,0 +1,6 @@
+/src
+.env
+.babelrc
+.gitignore
+.prettierrc
+webpack.config.js
