@@ -1,5 +1,5 @@
 const path = require('path')
-const nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
     mode: 'production',
@@ -36,6 +36,11 @@ module.exports = {
                 },
             },
         ],
+    },
+    resolve: {
+        alias: {
+            react: path.resolve('./node_modules/react'),
+        },
     },
     target: 'node',
     externals: [nodeExternals()],
