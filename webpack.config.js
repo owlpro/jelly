@@ -8,6 +8,7 @@ module.exports = {
         // libraryTarget: 'amd',
         library: 'jelly-smart-crud',
         libraryTarget: 'umd',
+        // libraryTarget: 'commonjs2',
         publicPath: '/dist/',
         umdNamedDefine: true,
     },
@@ -34,24 +35,20 @@ module.exports = {
         ],
     },
     resolve: {
-        alias: {
-            react: path.resolve(__dirname, './node_modules/react'),
-            'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-        },
+        extensions: ['.js', '.jsx'],
     },
-    externals: {
-        // Don't bundle react or react-dom
-        react: {
-            commonjs: 'react',
-            commonjs2: 'react',
-            amd: 'React',
-            root: 'React',
+    externals: [
+        {
+            'escape-string-regexp': 'escape-string-regexp',
+            flat: 'flat',
+            linkifyjs: 'linkifyjs',
+            'snake-case': 'snake-case',
+            react: {
+                root: 'React',
+                commonjs2: 'react',
+                commonjs: 'react',
+                amd: 'react',
+            },
         },
-        'react-dom': {
-            commonjs: 'react-dom',
-            commonjs2: 'react-dom',
-            amd: 'ReactDOM',
-            root: 'ReactDOM',
-        },
-    },
+    ],
 }
