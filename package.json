@@ -1,6 +1,6 @@
 {
     "name": "jelly-smart-crud",
-    "version": "1.0.25",
+    "version": "1.0.26",
     "private": false,
     "main": "./dist/module.bundle.js",
     "peerDependencies": {
