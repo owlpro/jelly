@@ -39,18 +39,27 @@ module.exports = {
             },
         ],
     },
-    resolve: {
-        alias: {
-            react: path.resolve('./node_modules/react'),
-            'react-dom': path.resolve('./node_modules/react-dom'),
-            'react-redux': path.resolve('./node_modules/react-redux'),
-            '@material-ui/core': path.resolve('./node_modules/@material-ui/core'),
-            '@material-ui/icons': path.resolve('./node_modules/@material-ui/icons'),
-            '@material-ui/lab': path.resolve('./node_modules/@material-ui/lab'),
-            '@material-ui/pickers': path.resolve('./node_modules/@material-ui/pickers'),
-        },
-    },
-    target: 'node',
-    externals: [nodeExternals()],
-    plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
+    // resolve: {
+    //     alias: {
+    //         react: path.resolve('./node_modules/react'),
+    //         'react-dom': path.resolve('./node_modules/react-dom'),
+    //         'react-redux': path.resolve('./node_modules/react-redux'),
+    //         '@material-ui/core': path.resolve('./node_modules/@material-ui/core'),
+    //         '@material-ui/icons': path.resolve('./node_modules/@material-ui/icons'),
+    //         '@material-ui/lab': path.resolve('./node_modules/@material-ui/lab'),
+    //         '@material-ui/pickers': path.resolve('./node_modules/@material-ui/pickers'),
+    //     },
+    // },
+    // target: 'node',
+    // externals: [nodeExternals()],
+    // plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('development'),
+            },
+        }),
+    ],
 }
