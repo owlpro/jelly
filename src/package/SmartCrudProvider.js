@@ -27,14 +27,14 @@ class SmartCrudProvider extends React.Component {
                         <Modal.Body>fooo ererere</Modal.Body>
                     </Modal> */}
                     <CircularProgress />
-                    <Row>
-                        <Col xs={12}>
-                            <h1>this is testing plugin for developing smart crud</h1>
-                        </Col>
-                        <Col xs={12}>
-                            <Button variant="contained">foooo</Button>
-                        </Col>
-                    </Row>
+                    {/* <Row> */}
+                    {/* <Col xs={12}> */}
+                    <h1>this is testing plugin for developing smart crud</h1>
+                    {/* </Col> */}
+                    {/* <Col xs={12}> */}
+                    <Button variant="contained">foooo</Button>
+                    {/* </Col> */}
+                    {/* </Row> */}
                 </Box>
 
                 {this.props.children}
