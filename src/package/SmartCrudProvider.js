@@ -25,7 +25,7 @@ class SmartCrudProvider extends React.Component {
                     <p>hereeeee</p>
                     {/* <Modal show={true}>
                         <Modal.Body>fooo ererere</Modal.Body>
-                    </Modal>
+                    </Modal> */}
                     <CircularProgress />
                     <Row>
                         <Col xs={12}>
@@ -34,7 +34,7 @@ class SmartCrudProvider extends React.Component {
                         <Col xs={12}>
                             <Button variant="contained">foooo</Button>
                         </Col>
-                    </Row> */}
+                    </Row>
                 </Box>
 
                 {this.props.children}
