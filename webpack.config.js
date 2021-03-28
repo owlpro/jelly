@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 module.exports = {
     mode: 'production',
@@ -44,6 +44,10 @@ module.exports = {
             react: path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
+            '@material-ui/core': path.resolve('./node_modules/@material-ui/core'),
+            '@material-ui/icons': path.resolve('./node_modules/@material-ui/icons'),
+            '@material-ui/lab': path.resolve('./node_modules/@material-ui/lab'),
+            '@material-ui/pickers': path.resolve('./node_modules/@material-ui/pickers'),
         },
     },
     target: 'node',
