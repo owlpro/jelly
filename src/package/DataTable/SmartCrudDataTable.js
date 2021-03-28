@@ -1268,7 +1268,7 @@ class SmartCrudDataTable extends Component {
                 {this.renderSummationsModal()}
                 {this.renderMorphManyRelations()}
                 <div className="hide" id={'print_content' + this.state.key}>
-                    {/* <DataTableComponent title={this.props.title || 'لیست اطلاعات'} data={this.state.print.data} columns={printColumns} /> */}
+                    <DataTableComponent title={this.props.title || 'لیست اطلاعات'} data={this.state.print.data} columns={printColumns} />
                 </div>
                 <div className="custom_datatable_wrapper">
                     <div className={'custom_datatable_filter ' + (this.state.openFilters ? 'openFilters' : '')}>
@@ -1879,7 +1879,7 @@ class SmartCrudDataTable extends Component {
                             </div>
                         </div>
 
-                        {/* <DataTableComponent
+                        <DataTableComponent
                             progressComponent={<LoadingList />}
                             highlightOnHover
                             title="لیست اطلاعات"
@@ -1891,7 +1891,7 @@ class SmartCrudDataTable extends Component {
                             noHeader={true}
                             columns={this.state.columns}
                             noDataComponent={<NoDataComponent title={this.props.noDataTitle || 'هیچ اطلاعاتی موجود نیست'} />}
-                        /> */}
+                        />
                         <Pagination
                             accessibilityKey={this.state.key}
                             lastPage={this.props.smartcrud[this.state.key] ? this.props.smartcrud[this.state.key].total_page : null}

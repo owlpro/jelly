@@ -44,6 +44,7 @@ module.exports = {
             react: path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
+            'react-data-table-component': path.resolve('./node_modules/react-data-table-component'),
         },
     },
     target: 'node',
