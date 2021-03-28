@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Box, Button, CircularProgress, IconButton, TextField } from '@material-ui/core'
-import { Col, Modal, Row } from 'react-bootstrap'
+import { Box, Button, CircularProgress, Grid, IconButton, Modal, TextField } from '@material-ui/core'
 import { FileDrop } from 'react-file-drop'
 import { connect } from 'react-redux'
 import { media_get_list, media_upload, set_media_modal_show_to } from '../Redux/action'
@@ -207,7 +206,7 @@ class MediaBase extends Component {
 
         return (
             <Modal size="xl" show={this.props.show} onHide={this.closeGeneralModal}>
-                <Modal.Body>
+                <Box p={2}>
                     <input multiple onChange={this.onFileInputChange} ref={(el) => (this.fileInputRef = el)} type="file" className="hide" />
                     {this.renderDetailsContents()}
                     <FileDrop
@@ -234,11 +233,11 @@ class MediaBase extends Component {
                                             renderThumbVertical={(props) => <div {...props} className="thumb-vertical" />}
                                             renderTrackVertical={(props) => <div {...props} className="track-vertical" />}
                                         >
-                                            <Col xs={12} className="sm_media_type_categories_inner">
-                                                <Row className="sm_media_type_categories">
+                                            <Grid item xs={12} className="sm_media_type_categories_inner">
+                                                <Grid container className="sm_media_type_categories">
                                                     {formats.length ? (
                                                         formats.map((format, key) => (
-                                                            <Col xs={6} className="sm_media_type_category_wrapper" key={key}>
+                                                            <Grid item xs={6} className="sm_media_type_category_wrapper" key={key}>
                                                                 <Button
                                                                     onClick={this.filterByCategory(format)}
                                                                     variant="contained"
@@ -247,15 +246,15 @@ class MediaBase extends Component {
                                                                 >
                                                                     <FileFormat format={format} className="sm_media_category_item_icon" />
                                                                 </Button>
-                                                            </Col>
+                                                            </Grid>
                                                         ))
                                                     ) : (
                                                         <div className="sm_media_type_categories_empty">
                                                             {/* <p>برای دسته بندی بر اساس فرمت، نیاز است ابتدا فایلی آپلود نمایید.</p> */}
                                                         </div>
                                                     )}
-                                                </Row>
-                                            </Col>
+                                                </Grid>
+                                            </Grid>
                                         </Scrollbars>
                                         {/* </ReactScrollbar> */}
                                         {/* <div className="sm_show_all_categories_wrapper">
@@ -306,8 +305,10 @@ class MediaBase extends Component {
                                         onScroll={this.onScrollBody}
                                     >
                                         <div className="sm_media_contents">
-                                            <Col className="sm_media_contents_inner m-0">
-                                                <Row className="sm_media_item_wrapper">{mediaToShow.map((item) => this.renderMediaItem(item))}</Row>
+                                            <Grid item className="sm_media_contents_inner m-0">
+                                                <Grid container className="sm_media_item_wrapper">
+                                                    {mediaToShow.map((item) => this.renderMediaItem(item))}
+                                                </Grid>
 
                                                 {mediaToShow.length < 1 ? (
                                                     this.state.inSearch && !this.props.loading ? (
@@ -331,14 +332,14 @@ class MediaBase extends Component {
                                                         </div>
                                                     )
                                                 ) : null}
-                                            </Col>
+                                            </Grid>
                                         </div>
                                     </Scrollbars>
                                 </div>
                             </div>
                         </Box>
                     </FileDrop>
-                </Modal.Body>
+                </Box>
             </Modal>
         )
     }
@@ -383,7 +384,7 @@ class MediaBase extends Component {
     renderMediaItem = (item) => {
         let imageUrl = this.#isImage(item) ? this.#getImageThumbnailedUrl(item) : ''
         return (
-            <Col className="sm_media_inner m-0" xs={3} key={item.id}>
+            <Grid item className="sm_media_inner m-0" xs={3} key={item.id}>
                 <div className="sm_media_item" onDoubleClick={this.onClickMedia(item)} onClick={this.onMediaClick(item)}>
                     <div className="sm_media">
                         <div className="sm_media_image" style={{ backgroundImage: `url('${imageUrl}')` }}>
@@ -399,7 +400,7 @@ class MediaBase extends Component {
                         </span>
                     </div>
                 </div>
-            </Col>
+            </Grid>
         )
     }
 

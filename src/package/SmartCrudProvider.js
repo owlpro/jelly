@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import './Assets/scss/styles.scss'
-// import Media from './Media/index'
+import Media from './Media/index'
 
 import { Box, Button, CircularProgress, IconButton, TextField } from '@material-ui/core'
 import { Col, Modal, Row } from 'react-bootstrap'
@@ -20,22 +20,13 @@ class SmartCrudProvider extends React.Component {
     render() {
         return (
             <Fragment>
-                {/* <Media /> */}
-                <Box>
+                <Media />
+                {/* <Box>
                     <p>hereeeee</p>
-                    {/* <Modal show={true}>
-                        <Modal.Body>fooo ererere</Modal.Body>
-                    </Modal> */}
                     <CircularProgress />
-                    {/* <Row> */}
-                    {/* <Col xs={12}> */}
                     <h1>this is testing plugin for developing smart crud</h1>
-                    {/* </Col> */}
-                    {/* <Col xs={12}> */}
                     <Button variant="contained">foooo</Button>
-                    {/* </Col> */}
-                    {/* </Row> */}
-                </Box>
+                </Box> */}
 
                 {this.props.children}
             </Fragment>
