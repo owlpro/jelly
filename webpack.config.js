@@ -50,16 +50,7 @@ module.exports = {
     //         '@material-ui/pickers': path.resolve('./node_modules/@material-ui/pickers'),
     //     },
     // },
-    // target: 'node',
-    // externals: [nodeExternals()],
-    // plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('development'),
-            },
-        }),
-    ],
+    target: 'node',
+    externals: [nodeExternals()],
+    plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
 }
