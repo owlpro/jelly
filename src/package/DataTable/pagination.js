@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Row, Col } from "react-bootstrap"
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
@@ -9,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Number33 } from "../Helpers/general";
 import * as $ from 'jquery';
 import { setDTPaginationTo } from '../Redux/action';
+import { Grid } from '@material-ui/core';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -121,8 +121,8 @@ class Pagination extends React.Component {
     render() {
         let current_page = this.props.datatable[this.props.accessibilityKey] ? this.props.datatable[this.props.accessibilityKey].current_page : 1
         return (
-            <Row>
-                <Col xs={3} className="mb-0">
+            <Grid container>
+                <Grid item xs={3} className="mb-0">
                     {this.props.onChangeLimit ? (
                         <div className="pagination_limit_section">
                             <span className="ml-1">تعداد در هر صفحه</span>
@@ -144,8 +144,8 @@ class Pagination extends React.Component {
                     ) : null}
 
 
-                </Col>
-                <Col xs={6} className="mb-0">
+                </Grid>
+                <Grid item xs={6} className="mb-0">
                     {this.props.lastPage > 1 ? (
                         <div className={"pagination " + ("private_pagination" + this.state.key)}>
                             <div key="prev_page" className="changePage" onClick={this.getPage(current_page === 1 ? current_page : current_page - 1)}><i className="feather icon-arrow-right"></i></div>
@@ -157,16 +157,16 @@ class Pagination extends React.Component {
                         </div>
                     ) : null}
 
-                </Col>
+                </Grid>
                 {this.props.totalItem ? (
-                    <Col xs={3} className="pagination_total_row mb-0">
+                    <Grid item xs={3} className="pagination_total_row mb-0">
                         <span className="ml-2">تعداد کل </span>
                         <span className="pagination_total_items">{this.props.totalItem ? Number33(this.props.totalItem) : null}</span>
                         <span className="mr-2">ردیف</span>
-                    </Col>
+                    </Grid>
                 ) : null}
 
-            </Row>
+            </Grid>
 
         )
     }

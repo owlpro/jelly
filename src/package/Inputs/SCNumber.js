@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
-import { e2p, Number33, p2e } from "../Helpers/general";
-import { Col } from "react-bootstrap";
+import { Grid, TextField } from "@material-ui/core";
+import { Number33, p2e } from "../Helpers/general";
 
 class SCNumber extends Component {
 
@@ -78,7 +77,7 @@ class SCNumber extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <TextField
                         fullWidth
                         type="text"
@@ -93,7 +92,7 @@ class SCNumber extends Component {
                         name={this.state.selector}
                         onChange={this.onChange}
                     />
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

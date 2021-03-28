@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as $ from 'jquery'
-import { Row, Col, Modal } from 'react-bootstrap'
 import UIButton from '@material-ui/core/Button'
 import ClearIcon from '@material-ui/icons/Clear'
 import Pagination from './pagination'
@@ -36,7 +35,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import RefreshIcon from '@material-ui/icons/Refresh'
 import EqualizerRoundedIcon from '@material-ui/icons/EqualizerRounded'
-import { Box } from '@material-ui/core'
+import { Box, Grid, Modal } from '@material-ui/core'
 import MoreItems from '../Components/MoreItems'
 import Tags from '../Relations/MorphMany/Tags'
 import Attachments from '../Relations/MorphMany/Attachments'
@@ -1198,34 +1197,36 @@ class SmartCrudDataTable extends Component {
 
     renderSummationsModal() {
         return (
-            <Modal size="md" show={this.state.summationsModal} onHide={this.setSummationsModalTo(false)}>
-                <Modal.Header>
-                    <Modal.Title>مجموع</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="settlementWithmerchantModal">
-                    <Box p={3}>
-                        <div className="dt_summations_wrapper">
-                            {this.props.summations && this.props.smartcrud[this.key] && this.props.smartcrud[this.key].summations
-                                ? this.props.summations.map((item, index) => {
-                                      return (
-                                          <div className="dt_summations_item" key={index}>
-                                              <span className="dt_summations_title">{item.title} : </span>
-                                              <span className="dt_summations_value">
-                                                  {Number33(this.props.smartcrud[this.key].summations[item.key] || 0)}
-                                                  <span className="dt_summations_unit">{item.unit}</span>
-                                              </span>
-                                          </div>
-                                      )
-                                  })
-                                : null}
-                        </div>
-                    </Box>
-                </Modal.Body>
-                <Modal.Footer className="justify-content-center">
-                    <UIButton variant="contained" className="mr-2 shadow-0" color="default" onClick={this.setSummationsModalTo(false)}>
-                        بستن
-                    </UIButton>
-                </Modal.Footer>
+            <Modal open={this.state.summationsModal} onClose={this.setSummationsModalTo(false)}>
+                <Box>
+                    <div className="sc-modal-header">
+                        <div className="sc-modal-title">مجموع</div>
+                    </div>
+                    <div className="sc-modal-body settlementWithmerchantModal">
+                        <Box p={3}>
+                            <div className="dt_summations_wrapper">
+                                {this.props.summations && this.props.smartcrud[this.key] && this.props.smartcrud[this.key].summations
+                                    ? this.props.summations.map((item, index) => {
+                                          return (
+                                              <div className="dt_summations_item" key={index}>
+                                                  <span className="dt_summations_title">{item.title} : </span>
+                                                  <span className="dt_summations_value">
+                                                      {Number33(this.props.smartcrud[this.key].summations[item.key] || 0)}
+                                                      <span className="dt_summations_unit">{item.unit}</span>
+                                                  </span>
+                                              </div>
+                                          )
+                                      })
+                                    : null}
+                            </div>
+                        </Box>
+                    </div>
+                    <div className="sc-modal-footer justify-content-center">
+                        <UIButton variant="contained" className="mr-2 shadow-0" color="default" onClick={this.setSummationsModalTo(false)}>
+                            بستن
+                        </UIButton>
+                    </div>
+                </Box>
             </Modal>
         )
     }
@@ -1318,8 +1319,8 @@ class SmartCrudDataTable extends Component {
                                 </div>
                                 {this.props.columns.filter((item) => item.sortableFilter).length ? (
                                     <div className="dt_order_by">
-                                        <Row>
-                                            <Col xs={2}>
+                                        <Grid container>
+                                            <Grid item xs={2}>
                                                 <Tooltip
                                                     enterDelay={1000}
                                                     title={sortByIsChecked ? 'کوچک به بزرگ' : 'بزرگ به کوچک'}
@@ -1339,8 +1340,8 @@ class SmartCrudDataTable extends Component {
                                                         />
                                                     </div>
                                                 </Tooltip>
-                                            </Col>
-                                            <Col xs={10}>
+                                            </Grid>
+                                            <Grid item xs={10}>
                                                 <FormControl className="width-100">
                                                     <InputLabel id="dt_filter_select_box_order_by">مرتب سازی بر اساس</InputLabel>
                                                     <Select
@@ -1365,8 +1366,8 @@ class SmartCrudDataTable extends Component {
                                                             })}
                                                     </Select>
                                                 </FormControl>
-                                            </Col>
-                                        </Row>
+                                            </Grid>
+                                        </Grid>
                                     </div>
                                 ) : null}
                                 <div className="filter_serction_items">
@@ -1375,14 +1376,15 @@ class SmartCrudDataTable extends Component {
                                         switch (item.type) {
                                             case 'text':
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
                                                             zIndex: this.columns.length - key,
                                                         }}
                                                     >
-                                                        <Col xs={12}>
+                                                        <Grid item xs={12}>
                                                             <TextField
                                                                 className="mui_datatable_search_input"
                                                                 margin="dense"
@@ -1400,21 +1402,22 @@ class SmartCrudDataTable extends Component {
                                                                 onKeyUp={this.filterWithEnter}
                                                                 value={this.state.strings_value[item.selector] || ''}
                                                             />
-                                                        </Col>
-                                                    </Row>
+                                                        </Grid>
+                                                    </Grid>
                                                 )
                                             case 'number':
                                                 let from_selector = item.selector + '_from'
                                                 let to_selector = item.selector + '_to'
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
                                                             zIndex: this.columns.length - key,
                                                         }}
                                                     >
-                                                        <Col xs={6}>
+                                                        <Grid item xs={6}>
                                                             <TextField
                                                                 className="mui_datatable_search_input"
                                                                 margin="dense"
@@ -1432,8 +1435,8 @@ class SmartCrudDataTable extends Component {
                                                                 label={'از ' + item.label}
                                                                 variant="filled"
                                                             />
-                                                        </Col>
-                                                        <Col xs={6}>
+                                                        </Grid>
+                                                        <Grid item xs={6}>
                                                             <TextField
                                                                 onChange={this.onChangeNumberInputs(to_selector)}
                                                                 value={this.state.numbers_value[to_selector] || ''}
@@ -1449,19 +1452,20 @@ class SmartCrudDataTable extends Component {
                                                                 label={'تا ' + item.label}
                                                                 variant="filled"
                                                             />
-                                                        </Col>
-                                                    </Row>
+                                                        </Grid>
+                                                    </Grid>
                                                 )
                                             case 'select':
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
                                                             zIndex: this.columns.length - key,
                                                         }}
                                                     >
-                                                        <Col xs={12}>
+                                                        <Grid item xs={12}>
                                                             <FormControl className="width-100">
                                                                 <InputLabel id={'dt_filter_select_box_' + item.selector}>{item.label}</InputLabel>
                                                                 <Select
@@ -1487,19 +1491,20 @@ class SmartCrudDataTable extends Component {
                                                                     })}
                                                                 </Select>
                                                             </FormControl>
-                                                        </Col>
-                                                    </Row>
+                                                        </Grid>
+                                                    </Grid>
                                                 )
                                             case 'multiple_select':
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
                                                             zIndex: this.columns.length - key,
                                                         }}
                                                     >
-                                                        <Col xs={12}>
+                                                        <Grid item xs={12}>
                                                             <FormControl className="width-100">
                                                                 <InputLabel id={'dt_filter_multiple_select_box_' + item.selector}>{item.label}</InputLabel>
                                                                 <Select
@@ -1539,14 +1544,14 @@ class SmartCrudDataTable extends Component {
                                                                     })}
                                                                 </Select>
                                                             </FormControl>
-                                                        </Col>
-                                                    </Row>
+                                                        </Grid>
+                                                    </Grid>
                                                 )
                                             case 'date':
                                                 let from_date_selector = item.selector + '_from'
                                                 let to_date_selector = item.selector + '_to'
                                                 return (
-                                                    <Row
+                                                    <Grid
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1554,7 +1559,7 @@ class SmartCrudDataTable extends Component {
                                                         }}
                                                     >
                                                         <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
-                                                            <Col xs={6}>
+                                                            <Grid item xs={6}>
                                                                 <DatePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1576,8 +1581,8 @@ class SmartCrudDataTable extends Component {
                                                                     value={this.state.dates_value[item.type][from_date_selector] ?? null}
                                                                     onChange={this.onChangeDatePicker(from_date_selector, item.type)}
                                                                 />
-                                                            </Col>
-                                                            <Col xs={6}>
+                                                            </Grid>
+                                                            <Grid item xs={6}>
                                                                 <DatePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1599,15 +1604,16 @@ class SmartCrudDataTable extends Component {
                                                                     value={this.state.dates_value[item.type][to_date_selector] ?? null}
                                                                     onChange={this.onChangeDatePicker(to_date_selector, item.type)}
                                                                 />
-                                                            </Col>
+                                                            </Grid>
                                                         </MuiPickersUtilsProvider>
-                                                    </Row>
+                                                    </Grid>
                                                 )
                                             case 'datetime':
                                                 let from_datetime_selector = item.selector + '_from'
                                                 let to_datetime_selector = item.selector + '_to'
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1615,7 +1621,7 @@ class SmartCrudDataTable extends Component {
                                                         }}
                                                     >
                                                         <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
-                                                            <Col xs={6}>
+                                                            <Grid item xs={6}>
                                                                 <DateTimePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1638,8 +1644,8 @@ class SmartCrudDataTable extends Component {
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
                                                                 />
-                                                            </Col>
-                                                            <Col xs={6}>
+                                                            </Grid>
+                                                            <Grid item xs={6}>
                                                                 <DateTimePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1662,15 +1668,16 @@ class SmartCrudDataTable extends Component {
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
                                                                 />
-                                                            </Col>
+                                                            </Grid>
                                                         </MuiPickersUtilsProvider>
-                                                    </Row>
+                                                    </Grid>
                                                 )
                                             case 'time':
                                                 let from_time_selector = item.selector + '_from'
                                                 let to_time_selector = item.selector + '_to'
                                                 return (
-                                                    <Row
+                                                    <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1678,7 +1685,7 @@ class SmartCrudDataTable extends Component {
                                                         }}
                                                     >
                                                         <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
-                                                            <Col xs={6}>
+                                                            <Grid item xs={6}>
                                                                 <TimePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1701,8 +1708,8 @@ class SmartCrudDataTable extends Component {
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
                                                                 />
-                                                            </Col>
-                                                            <Col xs={6}>
+                                                            </Grid>
+                                                            <Grid item xs={6}>
                                                                 <TimePicker
                                                                     autoOk
                                                                     disableToolbar
@@ -1726,9 +1733,9 @@ class SmartCrudDataTable extends Component {
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
                                                                 />
-                                                            </Col>
+                                                            </Grid>
                                                         </MuiPickersUtilsProvider>
-                                                    </Row>
+                                                    </Grid>
                                                 )
                                             default:
                                                 return null

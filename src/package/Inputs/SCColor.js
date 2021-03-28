@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
 import { BlockPicker } from 'react-color';
-import { TextField } from "@material-ui/core";
-import { Col } from "react-bootstrap";
+import { Grid, TextField } from "@material-ui/core";
 import * as $ from "jquery";
 
 class SCColor extends Component {
@@ -97,7 +96,7 @@ class SCColor extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col} className="sc_color_picker_wrapper">
+                <Grid item xs={this.state.col} className="sc_color_picker_wrapper">
                     <TextField
                         fullWidth
                         type="text"
@@ -129,7 +128,7 @@ class SCColor extends Component {
                         value={this.state.value}
                         onChangeComplete={this.onChange}
                     />
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

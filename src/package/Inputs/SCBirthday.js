@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import { Col } from "react-bootstrap";
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker
 } from '@material-ui/pickers';
 import JalaliUtils from "@date-io/jalaali";
 import moment from "moment";
+import { Grid } from "@material-ui/core";
 
 class SCBirthday extends Component {
 
@@ -65,7 +65,7 @@ class SCBirthday extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <MuiPickersUtilsProvider utils={JalaliUtils}>
                         <KeyboardDatePicker
                             fullWidth
@@ -101,7 +101,7 @@ class SCBirthday extends Component {
                             }}
                         /> */}
                     </MuiPickersUtilsProvider>
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

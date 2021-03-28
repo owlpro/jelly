@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
-import { Col } from "react-bootstrap";
+import { Grid, TextField } from "@material-ui/core";
 import { p2e } from "../Helpers/general";
 import { set_media_modal_show_to } from "../Redux/action";
 import { Fragment } from "react";
@@ -83,7 +82,7 @@ class SCImage extends Component {
         let child = this.state.file && this.#isImage(this.state.file) ? this.state.file.children[3] : null
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <div className="scimage_input_wrapper" onClick={this.#openMedia}>
                         {!this.state.file ? (
                             <Fragment>
@@ -112,7 +111,7 @@ class SCImage extends Component {
                                 </Fragment>
                             )}
                     </div>
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

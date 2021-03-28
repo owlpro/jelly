@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
-import { Col } from "react-bootstrap";
+import { Grid, TextField } from "@material-ui/core";
 import { p2e } from "../Helpers/general";
 
 class SCText extends Component {
@@ -69,7 +68,7 @@ class SCText extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <TextField
                         fullWidth
                         type="text"
@@ -83,7 +82,7 @@ class SCText extends Component {
                         name={this.state.selector}
                         onChange={this.onChange}
                     />
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

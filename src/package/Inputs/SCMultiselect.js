@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
+import { Grid, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import { Col } from "react-bootstrap";
 import axios from "axios";
 import { DangerAlert } from "../Helpers/alert";
 
@@ -129,7 +128,7 @@ class SCMultiselect extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <Autocomplete
                         multiple
                         loading={this.state.loading}
@@ -143,7 +142,7 @@ class SCMultiselect extends Component {
                         clearOnEscape
                         renderInput={(params) => <TextField {...params} error={this.state.error} onFocus={this.onFocus} label={this.state.isRequired ? (<React.Fragment>{this.state.label} <span className="smart_crud_label_required">*</span></React.Fragment>) : this.state.label} margin="dense" />}
                     />
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { Button, TextField } from "@material-ui/core";
-import { Col } from "react-bootstrap";
+import { Button, Grid, TextField } from "@material-ui/core";
 import { p2e } from "../Helpers/general";
 
 class SCIncrements extends Component {
@@ -74,7 +73,7 @@ class SCIncrements extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <div className="sc_increments_input_wrapper">
                         <span className={(this.state.error ? "text-danger " : "") + "sc_increments_label"}>
                             {this.state.isRequired ? (<React.Fragment>{this.state.label} <span className="smart_crud_label_required">*</span></React.Fragment>) : this.state.label}
@@ -105,7 +104,7 @@ class SCIncrements extends Component {
                         name={this.state.selector}
                         onChange={this.onChange}
                     /> */}
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

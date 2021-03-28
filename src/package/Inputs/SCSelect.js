@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { TextField } from "@material-ui/core";
+import { Grid, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import { Col } from "react-bootstrap";
 import axios from "axios";
 import { DangerAlert } from "../Helpers/alert";
 
@@ -126,7 +125,7 @@ class SCSelect extends Component {
     render() {
         return (
             <React.Fragment>
-                <Col xs={this.state.col}>
+                <Grid item xs={this.state.col}>
                     <Autocomplete
                         loading={this.state.loading}
                         loadingText={'درحال دریافت اطلاعات ...'}
@@ -145,7 +144,7 @@ class SCSelect extends Component {
                                 margin="dense"
                             />}
                     />
-                </Col>
+                </Grid>
             </React.Fragment>
         )
     }

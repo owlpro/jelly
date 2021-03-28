@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import PropTypes from 'prop-types'
 
-import { Box, Button, Tab, Tabs } from '@material-ui/core'
+import { Box, Button, Grid, Modal, Tab, Tabs } from '@material-ui/core'
 
 import SCText from './Inputs/SCText'
 import SCTextarea from './Inputs/SCTextarea'
@@ -16,7 +16,6 @@ import SCPassword from './Inputs/SCPassword'
 import SCBirthday from './Inputs/SCBirthday'
 import SCMap from './Inputs/SCMap'
 
-import { Col, Modal, Row } from 'react-bootstrap'
 import SmartCrudDataTable from './DataTable/SmartCrudDataTable'
 import { TabPanel } from './Helpers/TabPanel'
 import HasMany from './Relations/HasMany'
@@ -141,31 +140,31 @@ class SmartCrudBase extends Component {
 
         return (
             <Box p={3} className="smartcrud_create_section_wrapper" style={{ backgroundColor: 'white' }}>
-                <Row>
+                <Grid container>
                     {this.makeRenderableInputs()}
-                    <Col xs={12}>
+                    <Grid item xs={12}>
                         {this.props.hasOne
                             ? this.props.hasOne.map((relation, rel_index) => (
                                   <HasOne key={rel_index} index={rel_index} {...relation} ref={(el) => (this.relations.hasOne[rel_index] = el)} />
                               ))
                             : null}
-                    </Col>
-                    <Col xs={12}>
+                    </Grid>
+                    <Grid item xs={12}>
                         {this.props.hasMany
                             ? this.props.hasMany.map((relation, rel_index) => (
                                   <HasMany key={rel_index} index={rel_index} {...relation} ref={(el) => (this.relations.hasMany[rel_index] = el)} />
                               ))
                             : null}
-                    </Col>
-                    <Col xs={12}>
+                    </Grid>
+                    <Grid item xs={12}>
                         <Button onClick={this.onSubmit} variant={'contained'} className="ml-2 shadow-0" color={'primary'}>
                             ارسال
                         </Button>
                         <Button onClick={this.onClear} variant={'contained'} className="shadow-0">
                             پاک کردن
                         </Button>
-                    </Col>
-                </Row>
+                    </Grid>
+                </Grid>
             </Box>
         )
     }
@@ -176,9 +175,9 @@ class SmartCrudBase extends Component {
 
         return (
             <Box p={1}>
-                <Row>
+                <Grid container>
                     {this.makeRenderableInputs(params.data)}
-                    <Col xs={12}>
+                    <Grid item xs={12}>
                         {this.props.hasOne
                             ? this.props.hasOne.map((relation, rel_index) => {
                                   let relationClone = { ...relation }
@@ -198,8 +197,8 @@ class SmartCrudBase extends Component {
                                   )
                               })
                             : null}
-                    </Col>
-                    <Col xs={12}>
+                    </Grid>
+                    <Grid item xs={12}>
                         {this.props.hasMany
                             ? this.props.hasMany.map((relation, rel_index) => {
                                   let relationClone = { ...relation }
@@ -219,36 +218,38 @@ class SmartCrudBase extends Component {
                                   )
                               })
                             : null}
-                    </Col>
-                </Row>
+                    </Grid>
+                </Grid>
             </Box>
         )
     }
 
     renderEditModal = () => {
         return (
-            <Modal size="xl" show={this.state.edit.show} onHide={this.setEditModalTo(false)}>
-                <Modal.Header>
-                    <Modal.Title>
-                        <span>ویرایش</span>
-                        &nbsp;
-                        <span>{this.state.edit.data ? this.state.edit.data.title || this.state.edit.data.subtitle : null}</span>
-                        {/* {this.state.edit.data && this.state.edit.data.name ? <Fragment>&nbsp;-&nbsp;<span>(&nbsp;{this.state.edit.data.name}&nbsp;)</span></Fragment> : null} */}
-                    </Modal.Title>
-                </Modal.Header>
+            <Modal open={this.state.edit.show} onClose={this.setEditModalTo(false)}>
+                <Box>
+                    <div className="sc-modal-header">
+                        <div className="sc-modal-title">
+                            <span>ویرایش</span>
+                            &nbsp;
+                            <span>{this.state.edit.data ? this.state.edit.data.title || this.state.edit.data.subtitle : null}</span>
+                            {/* {this.state.edit.data && this.state.edit.data.name ? <Fragment>&nbsp;-&nbsp;<span>(&nbsp;{this.state.edit.data.name}&nbsp;)</span></Fragment> : null} */}
+                        </div>
+                    </div>
 
-                <Modal.Body className="settlementWithmerchantModal">
-                    <Box p={3}>{this.renderEditContent(this.state.edit)}</Box>
-                </Modal.Body>
+                    <div className="sc-modal-body settlementWithmerchantModal">
+                        <Box p={3}>{this.renderEditContent(this.state.edit)}</Box>
+                    </div>
 
-                <Modal.Footer className="justify-content-center">
-                    <Button variant="contained" className="shadow-0" color="primary" onClick={this.onSubmitEdit}>
-                        ذخیره
-                    </Button>
-                    <Button variant="contained" className="mr-2 shadow-0" color="default" onClick={this.setEditModalTo(false)}>
-                        بستن
-                    </Button>
-                </Modal.Footer>
+                    <div className="sc-modal-footer justify-content-center">
+                        <Button variant="contained" className="shadow-0" color="primary" onClick={this.onSubmitEdit}>
+                            ذخیره
+                        </Button>
+                        <Button variant="contained" className="mr-2 shadow-0" color="default" onClick={this.setEditModalTo(false)}>
+                            بستن
+                        </Button>
+                    </div>
+                </Box>
             </Modal>
         )
     }

@@ -205,7 +205,7 @@ class MediaBase extends Component {
         const formats = unique(allowFormats).sort()
 
         return (
-            <Modal size="xl" show={this.props.show} onHide={this.closeGeneralModal}>
+            <Modal size="xl" open={this.props.show} onClose={this.closeGeneralModal}>
                 <Box p={2}>
                     <input multiple onChange={this.onFileInputChange} ref={(el) => (this.fileInputRef = el)} type="file" className="hide" />
                     {this.renderDetailsContents()}
