@@ -51,6 +51,28 @@ module.exports = {
         },
     },
     target: 'node',
-    externals: [nodeExternals()],
+    // externals: [nodeExternals()],
+    externals: {
+        react: {
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'React',
+            root: 'React',
+        },
+        'react-dom': {
+            commonjs: 'react-dom',
+            commonjs2: 'react-dom',
+            amd: 'ReactDOM',
+            root: 'ReactDOM',
+        },
+        moment: 'moment',
+        '../moment': 'moment',
+        '@material-ui': {
+            root: 'MaterialUI',
+            commonjs2: 'material-ui',
+            commonjs: 'material-ui',
+            amd: 'material-ui',
+        },
+    },
     plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
 }
