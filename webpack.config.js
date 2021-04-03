@@ -6,13 +6,10 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 module.exports = {
     mode: 'production',
     entry: './src/module.js',
-    // devtool: 'inline-source-map',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'module.bundle.js',
-        // libraryTarget: 'amd',
         library: 'jelly-smart-crud',
-        // libraryTarget: 'umd',
         libraryTarget: 'commonjs2',
         publicPath: '/dist/',
         umdNamedDefine: true,
@@ -49,5 +46,5 @@ module.exports = {
     // },
     target: 'node',
     externals: [nodeExternals()],
-    // plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
+    plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
 }
