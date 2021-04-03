@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
-import DataTable from 'react-data-table-component'
 import './Assets/scss/styles.scss'
 import Media from './Media/index'
 
 class SmartCrudProvider extends React.Component {
     render() {
+        const DataTable = this.props.datatable
         return (
             <Fragment>
                 <Media />
