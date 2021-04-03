@@ -7,7 +7,7 @@ class App extends Component {
             <div>
                 hello world this is package
                 <SmartCrud
-                    route={'http://localhost:8000/api/v1/products'}
+                    route={'http://localhost:8080/api/v4/products'}
                     deletable
                     editable
                     inputs={[
