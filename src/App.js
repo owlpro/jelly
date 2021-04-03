@@ -45,23 +45,24 @@ class App extends Component {
                     columns={[
                         {
                             selector: 'key',
-                            title: 'key',
+                            name: 'key',
                         },
                         {
                             selector: 'title',
-                            label: 'title',
+                            name: 'title',
+                            searchable: true,
                         },
                         {
                             selector: 'subtitle',
-                            label: 'subtitle',
+                            name: 'subtitle',
                         },
                         {
                             selector: 'description',
-                            label: 'description',
+                            name: 'description',
                         },
                         {
                             selector: 'amount',
-                            label: 'amount',
+                            name: 'amount',
                         },
                     ]}
                     filters={[]}

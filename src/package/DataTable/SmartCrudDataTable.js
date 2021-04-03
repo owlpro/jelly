@@ -6,7 +6,6 @@ import UIButton from '@material-ui/core/Button'
 import ClearIcon from '@material-ui/icons/Clear'
 import Pagination from './pagination'
 import Select from '@material-ui/core/Select'
-import DataTableComponent from 'react-data-table-component'
 import LoadingList from './loadingList'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -42,6 +41,7 @@ import Attachments from '../Relations/MorphMany/Attachments'
 import Checkbox from '@material-ui/core/Checkbox'
 import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
+// import Context from './../Helpers/context'
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
@@ -1263,6 +1263,10 @@ class SmartCrudDataTable extends Component {
 
         this.row = 1
         let printColumns = this.state.columns.filter((item) => item.selector !== '__more_items__' && item.selector !== '__select__')
+        // console.log(this.props)
+        console.log(this.props.smartcrud)
+        const DataTableComponent = this.props.smartcrud.config.datatable
+        if (!DataTableComponent) return null
         return (
             <Fragment>
                 {this.renderSummationsModal()}
@@ -1910,6 +1914,7 @@ class SmartCrudDataTable extends Component {
 const mapStateToProps = (state) => ({
     panel: state.panel,
     smartcrud: state.smartcrud,
+    config: state.smartcrud.config,
 })
 
 const mapDispatchToProps = (dispatch) => ({

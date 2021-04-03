@@ -8,6 +8,7 @@ const initState = {
     media_loading: false,
     media_modal_show: false,
     media_selection_type: null,
+    config: {},
     media_on_select: () => {},
 }
 
@@ -230,6 +231,9 @@ const smartcrudReducer = (state = initState, action) => {
             state.media = media
             return { ...state }
         case consts.MEDIA_UPLOAD_FAILED:
+            return { ...state }
+        case consts.STORE_CONFIGS:
+            state.config = action.config
             return { ...state }
 
         default:

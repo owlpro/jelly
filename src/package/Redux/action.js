@@ -365,5 +365,7 @@ export const media_save_to_gallery = (request, data) => (dispatch) => {
     })
 }
 
-export const closeDialog = () => ({ type: "CLOSE_DIALOG" })
-export const openDialog = (dialogConfig) => ({ type: "OPEN_DIALOG", dialogConfig })
+export const closeDialog = () => ({ type: 'CLOSE_DIALOG' })
+export const openDialog = (dialogConfig) => ({ type: 'OPEN_DIALOG', dialogConfig })
+
+export const store_configs = (config) => ({ type: consts.STORE_CONFIGS, config })
