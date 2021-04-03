@@ -7,9 +7,9 @@
     "peerDependencies": {
         "prop-types": "^15.7.2",
         "react": "^17.0.1",
+        "react-data-table-component": "^6.11.7",
         "react-dom": "^17.0.1",
-        "styled-components": "^5.2.1",
-        "react-data-table-component": "^6.11.7"
+        "styled-components": "^5.2.1"
     },
     "dependencies": {
         "@babel/cli": "^7.13.10",
@@ -77,6 +77,8 @@
         ]
     },
     "devDependencies": {
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^18.0.0",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-plugin-transform-class-properties": "^6.24.1",
@@ -90,6 +92,7 @@
         "exports-loader": "^2.0.0",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.3.1",
+        "rollup": "^2.44.0",
         "style-loader": "^2.0.0",
         "svg-url-loader": "^7.1.1",
         "webpack": "^4.44.2",
