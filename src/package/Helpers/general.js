@@ -115,11 +115,7 @@ export const Dialog = (config = {}) => {
     config.no = config.no ? config.no : 'خیر'
     config.title = config.title ? config.title : 'تاییدیه'
     config.description = config.description ? config.description : 'از این عملیات اطمنینان دارید ؟'
-    config.onAccept = config.onAccept
-        ? config.onAccept
-        : () => {
-              // console.log('تایید شد')
-          }
+    config.onAccept = config.onAccept ? config.onAccept : () => {}
     config.onDenied = config.onDenied ? config.onDenied : () => {}
 
     store.dispatch(openDialog(config))

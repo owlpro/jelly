@@ -41,7 +41,9 @@ import Attachments from '../Relations/MorphMany/Attachments'
 import Checkbox from '@material-ui/core/Checkbox'
 import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
-
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import './../Assets/scss/datatable.scss'
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
 class SmartCrudDataTable extends Component {
@@ -399,7 +401,7 @@ class SmartCrudDataTable extends Component {
                             moreItems.push({
                                 disabled: false,
                                 label: 'ویرایش',
-                                icon: <i className="feather icon-edit"></i>,
+                                icon: <EditIcon />,
                                 action: () => {
                                     this.props.onEdit(row)
                                 },
@@ -421,7 +423,7 @@ class SmartCrudDataTable extends Component {
                             moreItems.push({
                                 disabled: false,
                                 label: 'حذف',
-                                icon: <i className="feather icon-trash text-danger"></i>,
+                                icon: <DeleteIcon color="error" />,
                                 action: () => {
                                     this.props.onDelete(row)
                                 },
@@ -495,9 +497,9 @@ class SmartCrudDataTable extends Component {
 
         this.props.setDTPaginationTo(this.state.key, 1)
         this.row = 1
-        $('.pagination_effect.PE' + this.state.key).css({
-            right: 9,
-        })
+        // $('.pagination_effect.PE' + this.state.key).css({
+        //     right: 9,
+        // })
     }
 
     onChangePage = async (page) => {
@@ -1198,12 +1200,12 @@ class SmartCrudDataTable extends Component {
 
     renderSummationsModal() {
         return (
-            <Modal open={this.state.summationsModal} onClose={this.setSummationsModalTo(false)}>
-                <Box>
+            <Modal className="sc-modal-wrapper" open={this.state.summationsModal} onClose={this.setSummationsModalTo(false)}>
+                <Box className="sc-modal-inner">
                     <div className="sc-modal-header">
                         <div className="sc-modal-title">مجموع</div>
                     </div>
-                    <div className="sc-modal-body settlementWithmerchantModal">
+                    <div className="sc-modal-body">
                         <Box p={3}>
                             <div className="dt_summations_wrapper">
                                 {this.props.summations && this.props.smartcrud[this.key] && this.props.smartcrud[this.key].summations
@@ -1319,7 +1321,7 @@ class SmartCrudDataTable extends Component {
                                 </div>
                                 {this.props.columns.filter((item) => item.sortableFilter).length ? (
                                     <div className="dt_order_by">
-                                        <Grid container>
+                                        <Grid container spacing={3}>
                                             <Grid item xs={2}>
                                                 <Tooltip
                                                     enterDelay={1000}

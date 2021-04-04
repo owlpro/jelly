@@ -1,0 +1,15 @@
+.custom_datatable {
+    & .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .pagination_pages {
+            & .page {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+    }
+}

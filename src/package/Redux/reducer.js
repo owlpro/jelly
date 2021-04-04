@@ -9,6 +9,10 @@ const initState = {
     media_modal_show: false,
     media_selection_type: null,
     config: {},
+    pageLoading: false,
+    dialog: {
+        isOpen: false,
+    },
     media_on_select: () => {},
 }
 
@@ -234,6 +238,18 @@ const smartcrudReducer = (state = initState, action) => {
             return { ...state }
         case consts.STORE_CONFIGS:
             state.config = action.config
+            return { ...state }
+
+        case consts.SET_PAGE_LOADING_TO:
+            return { ...state, pageLoading: action.pageLoading }
+        case consts.OPEN_DIALOG:
+            state.dialog = { ...action.dialogConfig }
+            state.dialog.isOpen = true
+            return { ...state }
+        case consts.CLOSE_DIALOG:
+            // state.dialog = {}
+            state.dialog = { ...state.dialog }
+            state.dialog.isOpen = false
             return { ...state }
 
         default:

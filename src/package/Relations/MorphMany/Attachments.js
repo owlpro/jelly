@@ -77,8 +77,8 @@ class Attachments extends Component {
     render() {
         return (
             <Fragment>
-                <Modal size="xl" open={this.state.show} onClose={this.#setShowTo(false)}>
-                    <Box>
+                <Modal className="sc-modal-wrapper" size="xl" open={this.state.show} onClose={this.#setShowTo(false)}>
+                    <Box className="sc-modal-inner">
                         <div className="sc-modal-header">
                             <div className="sc-modal-title">مدیریت ضمیمه ها</div>
                         </div>

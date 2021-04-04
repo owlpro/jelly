@@ -1,0 +1,10 @@
+.sc_more_items {
+    & .MuiList-root.MuiMenu-list.MuiList-padding {
+        padding: 0;
+    }
+    & .mui_menu_item {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+}

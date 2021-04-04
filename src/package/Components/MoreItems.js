@@ -43,6 +43,7 @@ export default function Dropdown(props) {
                 open={open}
                 onClose={handleClose}
                 PaperProps={{ style: { width: '30ch' } }}
+                className="sc_more_items"
             >
                 {props.items.map((option, index) => {
                     let disabled = isDisabled(index)

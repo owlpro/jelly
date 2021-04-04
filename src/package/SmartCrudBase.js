@@ -39,7 +39,7 @@ class SmartCrudBase extends Component {
 
     relations = {}
 
-    makeRenderableInputs = (defaultData = null) => {
+    RenderInputs = (defaultData = null) => {
         if (!this.props.inputs) return null
         return this.props.inputs.map((item, loopKey) => {
             let input = { ...item }
@@ -140,8 +140,8 @@ class SmartCrudBase extends Component {
 
         return (
             <Box p={3} className="smartcrud_create_section_wrapper" style={{ backgroundColor: 'white' }}>
-                <Grid container>
-                    {this.makeRenderableInputs()}
+                <Grid container spacing={3}>
+                    {this.RenderInputs()}
                     <Grid item xs={12}>
                         {this.props.hasOne
                             ? this.props.hasOne.map((relation, rel_index) => (
@@ -175,50 +175,50 @@ class SmartCrudBase extends Component {
 
         return (
             <Box p={1}>
-                <Grid container>
-                    {this.makeRenderableInputs(params.data)}
-                    <Grid item xs={12}>
-                        {this.props.hasOne
-                            ? this.props.hasOne.map((relation, rel_index) => {
-                                  let relationClone = { ...relation }
-                                  let selector = relation.relation.split(':')[0]
-                                  let value = params.data ? params.data[selector] : null
-                                  relationClone['value'] = value
+                <Grid container spacing={3}>
+                    {this.RenderInputs(params.data)}
+                    {this.props.hasOne ? (
+                        <Grid item xs={12}>
+                            {this.props.hasOne.map((relation, rel_index) => {
+                                let relationClone = { ...relation }
+                                let selector = relation.relation.split(':')[0]
+                                let value = params.data ? params.data[selector] : null
+                                relationClone['value'] = value
 
-                                  return (
-                                      <HasOne
-                                          {...this.props}
-                                          row={this.state.edit.data}
-                                          key={rel_index}
-                                          index={rel_index}
-                                          {...relationClone}
-                                          ref={(el) => (this.relations.hasOne[rel_index] = el)}
-                                      />
-                                  )
-                              })
-                            : null}
-                    </Grid>
-                    <Grid item xs={12}>
-                        {this.props.hasMany
-                            ? this.props.hasMany.map((relation, rel_index) => {
-                                  let relationClone = { ...relation }
-                                  let selector = relation.relation.split(':')[0]
-                                  let value = params.data ? params.data[selector] : null
-                                  relationClone['value'] = value
+                                return (
+                                    <HasOne
+                                        {...this.props}
+                                        row={this.state.edit.data}
+                                        key={rel_index}
+                                        index={rel_index}
+                                        {...relationClone}
+                                        ref={(el) => (this.relations.hasOne[rel_index] = el)}
+                                    />
+                                )
+                            })}
+                        </Grid>
+                    ) : null}
+                    {this.props.hasMany ? (
+                        <Grid item xs={12}>
+                            {this.props.hasMany.map((relation, rel_index) => {
+                                let relationClone = { ...relation }
+                                let selector = relation.relation.split(':')[0]
+                                let value = params.data ? params.data[selector] : null
+                                relationClone['value'] = value
 
-                                  return (
-                                      <HasMany
-                                          {...this.props}
-                                          row={this.state.edit.data}
-                                          key={rel_index}
-                                          index={rel_index}
-                                          {...relationClone}
-                                          ref={(el) => (this.relations.hasMany[rel_index] = el)}
-                                      />
-                                  )
-                              })
-                            : null}
-                    </Grid>
+                                return (
+                                    <HasMany
+                                        {...this.props}
+                                        row={this.state.edit.data}
+                                        key={rel_index}
+                                        index={rel_index}
+                                        {...relationClone}
+                                        ref={(el) => (this.relations.hasMany[rel_index] = el)}
+                                    />
+                                )
+                            })}
+                        </Grid>
+                    ) : null}
                 </Grid>
             </Box>
         )
@@ -226,8 +226,8 @@ class SmartCrudBase extends Component {
 
     renderEditModal = () => {
         return (
-            <Modal open={this.state.edit.show} onClose={this.setEditModalTo(false)}>
-                <Box>
+            <Modal className="sc-modal-wrapper" open={this.state.edit.show} onClose={this.setEditModalTo(false)}>
+                <Box className="sc-modal-inner">
                     <div className="sc-modal-header">
                         <div className="sc-modal-title">
                             <span>ویرایش</span>
@@ -237,7 +237,7 @@ class SmartCrudBase extends Component {
                         </div>
                     </div>
 
-                    <div className="sc-modal-body settlementWithmerchantModal">
+                    <div className="sc-modal-body">
                         <Box p={3}>{this.renderEditContent(this.state.edit)}</Box>
                     </div>
 
@@ -471,6 +471,7 @@ class SmartCrudBase extends Component {
     }
 
     onDelete = (row) => {
+        console.log(row)
         Dialog({
             title: 'حذف',
             description: (

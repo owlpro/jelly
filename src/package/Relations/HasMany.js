@@ -222,14 +222,14 @@ class HasMany extends Component {
         if (index.__key__)
             return (
                 <Fragment key={index.__key__}>
-                    <Grid container className="align-items-center">
+                    <Grid container alignItems="center" spacing={3}>
                         <Grid item xs={1}>
                             <IconButton className="mt-3" onClick={this.removeItem(index)}>
                                 <DeleteRoundedIcon className="text-danger" />
                             </IconButton>
                         </Grid>
                         <Grid item xs={11}>
-                            <Grid container>{this.makeRenderableInputs(index)}</Grid>
+                            <Grid container spacing={3}>{this.makeRenderableInputs(index)}</Grid>
                         </Grid>
                     </Grid>
                 </Fragment>

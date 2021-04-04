@@ -172,7 +172,7 @@ class HasOne extends Component {
                         <h4 className="text-right mb-0">{this.props.label}</h4>
                     </div>
                     <div className="smartcrud_relation_body">
-                        <Grid container>{this.makeRenderableInputs()}</Grid>
+                        <Grid container spacing={3}>{this.makeRenderableInputs()}</Grid>
                     </div>
                 </div>
             </Fragment>
