@@ -18,7 +18,7 @@ const smartcrudReducer = (state = initState, action) => {
 
     switch (action.type) {
         case consts.GET_DATA_STARTED:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             if (typeof state[key] !== 'object') {
                 state[key] = {
                     loaded: false,
@@ -28,7 +28,7 @@ const smartcrudReducer = (state = initState, action) => {
             }
             return { ...state }
         case consts.GET_DATA_SUCCESS:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             state[key].loaded = true
             state[key].data = action.response.data.data.data
             state[key].total_page = action.response.data.data.last_page
@@ -37,11 +37,11 @@ const smartcrudReducer = (state = initState, action) => {
             state[key].summations = action.response.data.summations
             return { ...state }
         case consts.GET_DATA_FAILED:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             state[key].loaded = true
             return { ...state }
         case consts.GET_SMART_CRUD_DATA_STARTED:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             if (typeof state[key] !== 'object') {
                 state[key] = {
                     loaded: false,
@@ -51,7 +51,7 @@ const smartcrudReducer = (state = initState, action) => {
             }
             return { ...state }
         case consts.GET_SMART_CRUD_DATA_SUCCESS:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             if (action.mutator && typeof action.mutator === 'function') {
                 results = action.mutator({ ...action.response })
             } else {
@@ -65,7 +65,7 @@ const smartcrudReducer = (state = initState, action) => {
             state[key].summations = results.summations || {}
             return { ...state }
         case consts.GET_SMART_CRUD_DATA_FAILED:
-            key = action.request.route.replace(/\//g, '_')
+            key = routeToKey(action.request.route)
             state[key].loaded = true
             state[key].data = []
             state[key].total_page = null

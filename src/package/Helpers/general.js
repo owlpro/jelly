@@ -1,97 +1,93 @@
-import store from "./../Redux/store"
+import store from './../Redux/store'
 import moment from 'jalali-moment'
-import { openDialog } from "../Redux/action";
+import { openDialog } from '../Redux/action'
 
 export const select = (selector, object) => {
-    let splitedSelector = selector.split(".");
+    let splitedSelector = selector.split('.')
 
     if (splitedSelector.length > 1) {
-        let selectingObject = { ...object };
+        let selectingObject = { ...object }
 
-        splitedSelector.forEach(selectorItem => {
+        splitedSelector.forEach((selectorItem) => {
             if (selectingObject && selectingObject.hasOwnProperty(selectorItem)) {
                 selectingObject = selectingObject[selectorItem]
             }
-        });
-        return selectingObject;
+        })
+        return selectingObject
     }
 
-    return object.hasOwnProperty(selector) ? object[selector] : null;
+    return object.hasOwnProperty(selector) ? object[selector] : null
 }
 export const setToObject = (selector, value, object) => {
     // let insertingObject = {...object};
-    let splitedSelector = selector.split(".");
+    let splitedSelector = selector.split('.')
     // console.log(selector, value, insertingObject);
 
     if (splitedSelector.length > 1) {
-        let workingObject = object;
+        let workingObject = object
 
         splitedSelector.forEach((selectorItem, index) => {
-            let isLastItem = index === splitedSelector.length - 1;
+            let isLastItem = index === splitedSelector.length - 1
 
             if (!workingObject.hasOwnProperty(selectorItem) && !isLastItem) {
-                workingObject[selectorItem] = {};
+                workingObject[selectorItem] = {}
             }
 
             if (isLastItem) {
-                workingObject[selectorItem] = value;
+                workingObject[selectorItem] = value
             }
 
-            workingObject = workingObject[selectorItem];
-        });
+            workingObject = workingObject[selectorItem]
+        })
 
-        return object;
+        return object
     }
 
-
-    object[selector] = value;
+    object[selector] = value
     return object
 }
 
-export const unique = names => {
-    let unique = {};
+export const unique = (names) => {
+    let unique = {}
     names.forEach(function (i) {
         if (!unique[i]) {
-            unique[i] = true;
+            unique[i] = true
         }
-    });
-    return Object.keys(unique);
+    })
+    return Object.keys(unique)
 }
 
 export const RandomStr = (length) => {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
+    let result = ''
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let charactersLength = characters.length
     for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        result += characters.charAt(Math.floor(Math.random() * charactersLength))
     }
-    return result;
+    return result
 }
 
 export const humanFileSize = (bytes, si = true, dp = 1) => {
-    const thresh = si ? 1000 : 1024;
+    const thresh = si ? 1000 : 1024
 
     if (Math.abs(bytes) < thresh) {
-        return bytes + ' بایت';
+        return bytes + ' بایت'
     }
 
-    const units = si
-        ? ['کیلوبایت', 'مگابایت', 'گیگابایت', 'ترابایت', 'PB', 'EB', 'ZB', 'YB']
-        : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-    let u = -1;
-    const r = 10 ** dp;
+    const units = si ? ['کیلوبایت', 'مگابایت', 'گیگابایت', 'ترابایت', 'PB', 'EB', 'ZB', 'YB'] : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+    let u = -1
+    const r = 10 ** dp
 
     do {
-        bytes /= thresh;
-        ++u;
-    } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+        bytes /= thresh
+        ++u
+    } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1)
 
-
-    return bytes.toFixed(dp) + ' ' + units[u];
+    return bytes.toFixed(dp) + ' ' + units[u]
 }
 
 export const routeToKey = (route) => {
-    return route.replace(/\//g, '_')
+    return route.replace(/^http:\/\/|^https:\/\/|[:\/]/gim, '_')
 }
 
 export const Number33 = (value) => {

@@ -12,7 +12,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 import jMoment from 'moment-jalaali'
-import { Number33, Dialog, select } from '../Helpers/general'
+import { Number33, Dialog, select, routeToKey } from '../Helpers/general'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -41,12 +41,11 @@ import Attachments from '../Relations/MorphMany/Attachments'
 import Checkbox from '@material-ui/core/Checkbox'
 import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
-// import Context from './../Helpers/context'
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
 class SmartCrudDataTable extends Component {
-    key = this.props.route.replace(/\//g, '_')
+    key = routeToKey(this.props.route)
     state = {
         filterItems: [],
         limit: 10,
@@ -520,7 +519,9 @@ class SmartCrudDataTable extends Component {
             $('.dsibt_clear').stop().fadeOut(200)
         }
 
-        if (event.keyCode === 13) {
+        // console.log(this.getItem('search'))
+        let nonValueSearchCondition = this.getItem('search') !== value && value.length === 0
+        if (nonValueSearchCondition || event.keyCode === 13) {
             this.search()
         }
     }
@@ -1256,17 +1257,12 @@ class SmartCrudDataTable extends Component {
                 },
             },
         }
-        // let merchants = this.props.smartcrud.merchants.map((merchant) => ({
-        //     label: merchant.title,
-        //     value: merchant.id,
-        // }))
 
         this.row = 1
         let printColumns = this.state.columns.filter((item) => item.selector !== '__more_items__' && item.selector !== '__select__')
-        // console.log(this.props)
-        console.log(this.props.smartcrud)
         const DataTableComponent = this.props.smartcrud.config.datatable
-        if (!DataTableComponent) return null
+
+        if (!DataTableComponent) return <h1 className="text-danger">Datatable not loaded</h1>
         return (
             <Fragment>
                 {this.renderSummationsModal()}

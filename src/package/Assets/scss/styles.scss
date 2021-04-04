@@ -511,12 +511,15 @@ span.refund_info_item {
     align-items: center;
     justify-content: flex-start;
     height: 65px;
+    & .MuiFormControl-root {
+        margin: 0 8px;
+    }
     & .selection_input_limit {
         & .MuiSelect-root {
             background-color: #f0f0f0;
             border: unset;
             border-radius: 0;
-            padding: 8px 12px 8px 26px;
+            // padding: 8px 12px 8px 26px;
         }
     }
 }
@@ -532,6 +535,7 @@ span.refund_info_item {
         background-color: #f0f0f0;
         padding: 7px 10px;
         letter-spacing: 1px;
+        margin: 0 8px;
     }
 }
 
@@ -845,6 +849,7 @@ span.iban_ir {
         padding: 30px;
         background-color: white;
         box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
         &.openFilters {
             transform: scale(0.93);
         }

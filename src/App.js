@@ -5,7 +5,6 @@ class App extends Component {
     render() {
         return (
             <div>
-                hello world this is package
                 <SmartCrud
                     route={'http://localhost:8080/api/v4/products'}
                     deletable

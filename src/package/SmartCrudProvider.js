@@ -9,18 +9,22 @@ class SmartCrudProvider extends React.Component {
     componentDidMount() {
         let propsData = { ...this.props }
         delete propsData.children
+        console.log(propsData)
         store.dispatch(store_configs(propsData))
     }
 
     render() {
+        console.log(this.props)
         // const DataTable = this.props.datatable
         // const contextData = {
         //     datatable: this.props.datatable,
         // }
         return (
             <Fragment>
-                <Media />
-                <Fragment>{this.props.children}</Fragment>
+                {/* <Media /> */}
+                {/* <Fragment> */}
+                {this.props.children}
+                {/* </Fragment> */}
 
                 {/* <DataTable
                     data={[{ id: 1, title: 'foo' }]}

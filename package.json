@@ -7,23 +7,15 @@
     "peerDependencies": {
         "prop-types": "^15.7.2",
         "react": "^17.0.1",
-        "react-data-table-component": "^6.11.7",
         "react-dom": "^17.0.1",
         "styled-components": "^5.2.1"
     },
     "dependencies": {
-        "@babel/cli": "^7.13.10",
-        "@babel/core": "^7.13.10",
-        "@babel/preset-env": "^7.13.12",
-        "@babel/preset-react": "^7.12.13",
         "@date-io/jalaali": "^2.10.8",
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "^4.0.0-alpha.57",
         "@material-ui/pickers": "^3.2.10",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
         "axios": "^0.21.1",
         "babel-loader": "^8.2.2",
         "jalali-moment": "^3.3.10",
@@ -37,7 +29,6 @@
         "react-color": "^2.19.3",
         "react-csv": "^2.0.3",
         "react-custom-scrollbars": "^4.2.1",
-        "react-data-table-component": "^6.11.7",
         "react-dom": "^17.0.1",
         "react-file-drop": "^3.1.2",
         "react-leaflet": "^3.1.0",
@@ -48,7 +39,6 @@
         "react-switch": "^6.0.0",
         "redux": "^4.0.5",
         "redux-thunk": "^2.3.0",
-        "styled-components": "^5.2.1",
         "web-vitals": "^1.0.1"
     },
     "scripts": {
@@ -77,10 +67,10 @@
         ]
     },
     "devDependencies": {
-        "@rollup/plugin-babel": "^5.3.0",
-        "@rollup/plugin-commonjs": "^18.0.0",
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.3",
+        "@babel/cli": "^7.13.10",
+        "@babel/core": "^7.13.10",
+        "@babel/preset-env": "^7.13.12",
+        "@babel/preset-react": "^7.12.13",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-plugin-transform-imports": "^2.0.0",
         "babel-plugin-transform-object-assign": "^6.22.0",
@@ -88,6 +78,9 @@
         "babel-plugin-transform-react-jsx": "^6.24.1",
         "babel-preset-env": "^1.7.0",
         "babel-preset-stage-0": "^6.24.1",
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.1.0",
+        "@testing-library/user-event": "^12.1.10",
         "css-loader": "^5.2.0",
         "exports-loader": "^2.0.0",
         "file-loader": "^6.2.0",
@@ -99,6 +92,8 @@
         "webpack-cleanup-plugin": "^0.5.1",
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "3.7.1",
-        "webpack-node-externals": "^2.5.2"
+        "webpack-node-externals": "^2.5.2",
+        "react-data-table-component": "^6.11.7",
+        "styled-components": "^5.2.1"
     }
 }

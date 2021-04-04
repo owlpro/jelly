@@ -36,14 +36,6 @@ module.exports = {
             },
         ],
     },
-    // resolve: {
-    //     alias: {
-    //         react: path.resolve('./node_modules/react'),
-    //         'react-dom': path.resolve('./node_modules/react-dom'),
-    //         'react-redux': path.resolve('./node_modules/react-redux'),
-    //         'react-data-table-component': path.resolve('./node_modules/react-data-table-component'),
-    //     },
-    // },
     target: 'node',
     externals: [nodeExternals()],
     plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
