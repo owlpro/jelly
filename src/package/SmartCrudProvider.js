@@ -6,7 +6,7 @@ import store from './Redux/store'
 import './Assets/scss/styles.scss'
 
 class SmartCrudProvider extends React.Component {
-    componentDidMount() {
+    UNSAFE_componentWillMount() {
         let propsData = { ...this.props }
         delete propsData.children
         store.dispatch(store_configs(propsData))

@@ -11,6 +11,12 @@ class App extends Component {
                     editable
                     inputs={[
                         {
+                            selector: 'image',
+                            label: 'image',
+                            type: 'image',
+                            col: 12
+                        },
+                        {
                             selector: 'key',
                             label: 'key',
                             type: 'text',
@@ -38,8 +44,15 @@ class App extends Component {
                             selector: 'amount',
                             label: 'amount',
                             type: 'number',
-                            col: 12
+                            col: 6
                         },
+                        {
+                            selector: "merchant_id",
+                            label: "merchant", 
+                            type: "select",
+                            options: "/api/v4/merchants?page_size=999",
+                            col: 6
+                        }
                     ]}
                     columns={[
                         {

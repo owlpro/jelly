@@ -21,7 +21,6 @@ class ProcessStatus extends Component {
     }
 
     render() {
-        console.log(this.props)
         let status = ''
         switch (this.props.status) {
             case 'success':

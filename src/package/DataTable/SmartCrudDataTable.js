@@ -1,3 +1,4 @@
+/* eslint import/no-webpack-loader-syntax: off */
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -20,7 +21,6 @@ import { MuiPickersUtilsProvider, DatePicker, DateTimePicker, TimePicker } from 
 import JalaliUtils from '@date-io/jalaali'
 import PrintIcon from '@material-ui/icons/Print'
 import { setDTPaginationTo, getMerchants, getFromSmartCrud, updateDatatableRow } from '../Redux/action'
-import axios from 'axios'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { DangerAlert } from '../Helpers/alert'
 import Chip from '@material-ui/core/Chip'
@@ -41,10 +41,12 @@ import Attachments from '../Relations/MorphMany/Attachments'
 import Checkbox from '@material-ui/core/Checkbox'
 import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 import './../Assets/scss/datatable.scss'
 import ProcessStatus from '../Components/ProcessStatus'
+import printStyles from '!!raw-loader!./../Assets/css/list_print.css'
+
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
 class SmartCrudDataTable extends Component {
@@ -887,7 +889,7 @@ class SmartCrudDataTable extends Component {
         Dialog({
             yes: 'تایید / شروع عملیات',
             no: 'خیر',
-            title: ' چاپ ' + this.props.title || 'لیست اطلاعات',
+            title: ' چاپ ' + (this.props.title || 'لیست اطلاعات'),
             description: ' انجام این عملیات یک فرایند زمانبر میباشد (تا چند دقیقه) ، آیا از انجام این عملیات اطمینان دارید ؟ ',
 
             onAccept: () => {
@@ -905,7 +907,7 @@ class SmartCrudDataTable extends Component {
         Dialog({
             yes: 'تایید / شروع عملیات',
             no: 'خیر',
-            title: ' خروجی ' + this.props.title || 'لیست اطلاعات',
+            title: ' خروجی ' + (this.props.title || 'لیست اطلاعات'),
             description: ' انجام این عملیات یک فرایند زمانبر میباشد (تا چند دقیقه) ، آیا از انجام این عملیات اطمینان دارید ؟ ',
 
             onAccept: () => {
@@ -928,7 +930,7 @@ class SmartCrudDataTable extends Component {
 
         let queryString = this.generateQueryString(1, 5000)
 
-        axios
+        this.props.axios
             .get(this.state.route + queryString)
             .then((response) => {
                 let results
@@ -949,8 +951,7 @@ class SmartCrudDataTable extends Component {
                 var printWindow = window.open('', 'PRINT', 'height=1018,width=800')
 
                 printWindow.document.write('<html><head><title>' + document.title + '</title>')
-                printWindow.document.write('<link rel="stylesheet" href="/menta-cloud/loyalty.admin/assets/css/listprint.css" />')
-                printWindow.document.write('<link rel="stylesheet" href="/menta-cloud/loyalty.admin/assets/fonts/feather/icon-font.css">')
+                printWindow.document.write(`<style rel="stylesheet">${printStyles}</style>`)
                 printWindow.document.write('</head><body >')
                 printWindow.document.write(document.getElementById('print_content' + this.state.key).innerHTML)
 
@@ -988,7 +989,7 @@ class SmartCrudDataTable extends Component {
 
         let queryString = this.generateQueryString(1, 5000)
 
-        axios
+        this.props.axios
             .get(this.state.route + queryString)
             .then(async (response) => {
                 let results
@@ -1551,6 +1552,7 @@ class SmartCrudDataTable extends Component {
                                                 let to_date_selector = item.selector + '_to'
                                                 return (
                                                     <Grid
+                                                        container
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1911,6 +1913,7 @@ const mapStateToProps = (state) => ({
     panel: state.panel,
     smartcrud: state.smartcrud,
     config: state.smartcrud.config,
+    axios: state.smartcrud.config.axios,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Box, Button, CircularProgress, IconButton, InputAdornment, Modal, TextField } from '@material-ui/core'
-import { delete_morph, edit_morph, get_morph, post_morph } from '../../Redux/action'
+import { Box, CircularProgress, IconButton, InputAdornment, Modal, TextField } from '@material-ui/core'
+import { delete_morph, get_morph, post_morph } from '../../Redux/action'
 import { connect } from 'react-redux'
 import { routeToKey } from './../../Helpers/general'
 import SearchIcon from '@material-ui/icons/Search'
@@ -301,7 +301,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     get_morph: (request, data) => dispatch(get_morph(request, data)),
     post_morph: (request, data) => dispatch(post_morph(request, data)),
-    edit_morph: (request, data) => dispatch(edit_morph(request, data)),
+    // edit_morph: (request, data) => dispatch(edit_morph(request, data)),
     delete_morph: (request, data) => dispatch(delete_morph(request, data)),
 })
 

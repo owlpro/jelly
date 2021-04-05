@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Box, Modal } from '@material-ui/core'
 import { connect } from 'react-redux'
-import { delete_morph, edit_morph, get_morph, post_morph } from '../../Redux/action'
+import { delete_morph, get_morph, post_morph } from '../../Redux/action'
 import { FileDrop } from 'react-file-drop'
 
 class Attachments extends Component {
@@ -112,7 +112,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     get_morph: (request, data) => dispatch(get_morph(request, data)),
     post_morph: (request, data) => dispatch(post_morph(request, data)),
-    edit_morph: (request, data) => dispatch(edit_morph(request, data)),
+    // edit_morph: (request, data) => dispatch(edit_morph(request, data)),
     delete_morph: (request, data) => dispatch(delete_morph(request, data)),
 })
 

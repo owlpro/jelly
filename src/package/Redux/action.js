@@ -1,10 +1,10 @@
 import * as consts from './constans'
-import axios from 'axios'
 
 const getDataStarted = (request) => ({ type: consts.GET_DATA_STARTED, request })
 const getDataSuccess = (request, response) => ({ type: consts.GET_DATA_SUCCESS, response, request })
 const getDataFailed = (request, error) => ({ type: consts.GET_DATA_FAILED, error, request })
-export const getData = (request, successCallBack) => (dispatch) => {
+export const getData = (request, successCallBack) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(getDataStarted(request))
     axios
         .get(request.route + request.query)
@@ -22,7 +22,8 @@ export const getData = (request, successCallBack) => (dispatch) => {
 const getFromSmartCrudDataStarted = (request) => ({ type: consts.GET_SMART_CRUD_DATA_STARTED, request })
 const getFromSmartCrudSuccess = (request, response, mutator) => ({ type: consts.GET_SMART_CRUD_DATA_SUCCESS, response, request, mutator })
 const getFromSmartCrudFailed = (request, error) => ({ type: consts.GET_SMART_CRUD_DATA_FAILED, error, request })
-export const getFromSmartCrud = (request, mutator = null) => (dispatch) => {
+export const getFromSmartCrud = (request, mutator = null) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(getFromSmartCrudDataStarted(request))
     return new Promise((resolve, reject) => {
         axios
@@ -43,7 +44,9 @@ export const getFromSmartCrud = (request, mutator = null) => (dispatch) => {
 const getMerchantsStarted = () => ({ type: consts.GET_MERCHANTS_STARTED })
 const getMerchantsSuccess = (response) => ({ type: consts.GET_MERCHANTS_SUCCESS, response })
 const getMerchantsFailed = (error) => ({ type: consts.GET_MERCHANTS_FAILED, error })
-export const getMerchants = (successCallBack) => (dispatch) => {
+export const getMerchants = (successCallBack) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
+
     let access = JSON.parse(localStorage.getItem('access'))
     dispatch(getMerchantsStarted())
     let route = `/api/v4/merchants?page_size=1000`
@@ -72,9 +75,11 @@ const createStarted = (request) => ({ type: consts.CREATE_STARTED, request })
 const createSuccess = (request, response) => ({ type: consts.CREATE_SUCCESS, response, request })
 const createFailed = (request, error) => ({ type: consts.CREATE_FAILED, error, request })
 
-export const createItem = (request, data) => (dispatch) => {
+export const createItem = (request, data) => (dispatch, getState) => {
     dispatch(setPageLoadingTo(true, 'درحال ایجاد ...'))
     dispatch(createStarted(request))
+    let axios = getState().smartcrud.config.axios;
+
     return new Promise((resolve, reject) => {
         axios
             .post(request.route, data)
@@ -95,9 +100,11 @@ const editStarted = (request) => ({ type: consts.EDIT_STARTED, request })
 const editSuccess = (request, response) => ({ type: consts.EDIT_SUCCESS, response, request })
 const editFailed = (request, error) => ({ type: consts.EDIT_FAILED, error, request })
 
-export const editItem = (request, data) => (dispatch) => {
+export const editItem = (request, data) => (dispatch, getState) => {
     dispatch(setPageLoadingTo(true, 'درحال ویرایش ...'))
     dispatch(editStarted(request))
+    let axios = getState().smartcrud.config.axios;
+
     return new Promise((resolve, reject) => {
         axios
             .put(request.route + '/' + data.id, data)
@@ -118,9 +125,11 @@ const deleteStarted = (request) => ({ type: consts.DELETE_STARTED, request })
 const deleteSuccess = (request, response) => ({ type: consts.DELETE_SUCCESS, response, request })
 const deleteFailed = (request, error) => ({ type: consts.DELETE_FAILED, error, request })
 
-export const deleteItem = (request, data) => (dispatch) => {
+export const deleteItem = (request, data) => (dispatch, getState) => {
     dispatch(setPageLoadingTo(true, 'درحال حذف ...'))
     dispatch(deleteStarted(request))
+    let axios = getState().smartcrud.config.axios;
+
     return new Promise((resolve, reject) => {
         axios
             .delete(request.route + '/' + data.id)
@@ -140,8 +149,10 @@ export const deleteItem = (request, data) => (dispatch) => {
 const get_morph_started = (request) => ({ type: consts.GET_MORPH_STARTED, request })
 const get_morph_success = (request, response) => ({ type: consts.GET_MORPH_SUCCESS, request, response })
 const get_morph_failed = (request, error) => ({ type: consts.GET_MORPH_FAILED, request, error })
-export const get_morph = (request, data) => (dispatch) => {
+export const get_morph = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(get_morph_started(request))
+
     return new Promise((resolve, reject) => {
         axios
             .get(request.route + `?page_size=1000&filters=[["${request.type_name}", "=", "${request.type}"], ["${request.id_name}", "=", "${data.id}"]]`)
@@ -159,8 +170,10 @@ export const get_morph = (request, data) => (dispatch) => {
 const post_morph_started = (request) => ({ type: consts.POST_MORPH_STARTED, request })
 const post_morph_success = (request, response) => ({ type: consts.POST_MORPH_SUCCESS, request, response })
 const post_morph_failed = (request, error) => ({ type: consts.POST_MORPH_FAILED, request, error })
-export const post_morph = (request, data) => (dispatch) => {
+export const post_morph = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(post_morph_started(request))
+
     return new Promise((resolve, reject) => {
         axios
             .post(request.route, data)
@@ -175,19 +188,21 @@ export const post_morph = (request, data) => (dispatch) => {
     })
 }
 
-const edit_morph_started = (request) => ({ type: consts.EDIT_MORPH_STARTED, request })
-const edit_morph_success = (request, response) => ({ type: consts.EDIT_MORPH_SUCCESS, request, response })
-const edit_morph_failed = (request, error) => ({ type: consts.EDIT_MORPH_FAILED, request, error })
-export const edit_morph = (request, data) => (dispatch) => {
-    dispatch(edit_morph_started(request))
-    return new Promise((resolve, reject) => {})
-}
+// const edit_morph_started = (request) => ({ type: consts.EDIT_MORPH_STARTED, request })
+// const edit_morph_success = (request, response) => ({ type: consts.EDIT_MORPH_SUCCESS, request, response })
+// const edit_morph_failed = (request, error) => ({ type: consts.EDIT_MORPH_FAILED, request, error })
+// export const edit_morph = (request, data) => (dispatch) => {
+//     dispatch(edit_morph_started(request))
+//     return new Promise((resolve, reject) => {})
+// }
 
 const delete_morph_started = (request) => ({ type: consts.DELETE_MORPH_STARTED, request })
 const delete_morph_success = (request, response) => ({ type: consts.DELETE_MORPH_SUCCESS, request, response })
 const delete_morph_failed = (request, error) => ({ type: consts.DELETE_MORPH_FAILED, request, error })
-export const delete_morph = (request, data) => (dispatch) => {
+export const delete_morph = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(delete_morph_started(request))
+
     return new Promise((resolve, reject) => {
         axios
             .delete(request.route + '/' + data.id)
@@ -205,9 +220,11 @@ export const delete_morph = (request, data) => (dispatch) => {
 const deleteHasManyRelationStarted = (request) => ({ type: consts.DELETE_HAS_MANY_RELATION_ITEM_STARTED, request })
 const deleteHasManyRelationSuccess = (request, response) => ({ type: consts.DELETE_HAS_MANY_RELATION_ITEM_SUCCESS, response, request })
 const deleteHasManyRelationFailed = (request, error) => ({ type: consts.DELETE_HAS_MANY_RELATION_ITEM_FAILED, error, request })
-export const deleteHasManyRelationItem = (request, data) => (dispatch) => {
+export const deleteHasManyRelationItem = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(setPageLoadingTo(true, 'در حال حذف رابطه ...', null))
     dispatch(deleteHasManyRelationStarted(request))
+
     return new Promise((resolve, reject) => {
         axios
             .delete(request.route, { data: data })
@@ -235,9 +252,11 @@ export const set_media_modal_show_to = (to, selectionType = null, onSelect = () 
 const media_get_list_started = (request) => ({ type: consts.MEDIA_GET_LIST_STARTED, request })
 const media_get_list_success = (request, response) => ({ type: consts.MEDIA_GET_LIST_SUCCESS, response, request })
 const media_get_list_failed = (request, error) => ({ type: consts.MEDIA_GET_LIST_FAILED, error, request })
-export const media_get_list = (request = null) => (dispatch) => {
+export const media_get_list = (request = null) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     // dispatch(setPageLoadingTo(true, '', null))
     dispatch(media_get_list_started(request))
+
     return new Promise((resolve, reject) => {
         let route = request && request.id ? '/api/v4/media/' + request.id : '/api/v4/media'
         axios
@@ -261,8 +280,10 @@ export const media_get_list = (request = null) => (dispatch) => {
 const media_upload_started = () => ({ type: consts.MEDIA_UPLOAD_STARTED })
 const media_upload_success = (response) => ({ type: consts.MEDIA_UPLOAD_SUCCESS, response })
 const media_upload_failed = (error) => ({ type: consts.MEDIA_UPLOAD_FAILED, error })
-export const media_upload = (data, config = {}) => (dispatch) => {
+export const media_upload = (data, config = {}) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
     dispatch(media_upload_started())
+
     return new Promise((resolve, reject) => {
         axios
             .post('/api/v4/media', data, config)
@@ -280,7 +301,9 @@ export const media_upload = (data, config = {}) => (dispatch) => {
 const media_delete_started = (request) => ({ type: consts.MEDIA_DELETE_STARTED, request })
 const media_delete_success = (request, response) => ({ type: consts.MEDIA_DELETE_SUCCESS, response, request })
 const media_delete_failed = (request, error) => ({ type: consts.MEDIA_DELETE_FAILED, error, request })
-export const media_delete = (request, data) => (dispatch) => {
+export const media_delete = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
+
     // dispatch(setPageLoadingTo(true, '', null))
     dispatch(media_delete_started(request))
     return new Promise((resolve, reject) => {
@@ -302,7 +325,9 @@ export const media_delete = (request, data) => (dispatch) => {
 const media_update_information_started = (request) => ({ type: consts.MEDIA_UPDATE_INFORMATION_STARTED, request })
 const media_update_information_success = (request, response) => ({ type: consts.MEDIA_UPDATE_INFORMATION_SUCCESS, response, request })
 const media_update_information_failed = (request, error) => ({ type: consts.MEDIA_UPDATE_INFORMATION_FAILED, error, request })
-export const media_update_information = (request, data) => (dispatch) => {
+export const media_update_information = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
+
     // dispatch(setPageLoadingTo(true), '', null)
     dispatch(media_update_information_started(request))
     return new Promise((resolve, reject) => {
@@ -324,7 +349,9 @@ export const media_update_information = (request, data) => (dispatch) => {
 const media_update_shear_with_started = (request) => ({ type: consts.MEDIA_UPDATE_SHEAR_WITH_STARTED, request })
 const media_update_shear_with_success = (request, response) => ({ type: consts.MEDIA_UPDATE_SHEAR_WITH_SUCCESS, response, request })
 const media_update_shear_with_failed = (request, error) => ({ type: consts.MEDIA_UPDATE_SHEAR_WITH_FAILED, error, request })
-export const media_update_shear_with = (request, data) => (dispatch) => {
+export const media_update_shear_with = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
+
     // dispatch(setPageLoadingTo(true, '', null))
     dispatch(media_update_shear_with_started(request))
     return new Promise((resolve, reject) => {
@@ -346,7 +373,9 @@ export const media_update_shear_with = (request, data) => (dispatch) => {
 const media_save_to_gallery_started = (request) => ({ type: consts.MEDIA_SAVE_TO_GALLERY_STARTED, request })
 const media_save_to_gallery_success = (request, response) => ({ type: consts.MEDIA_SAVE_TO_GALLERY_SUCCESS, response, request })
 const media_save_to_gallery_failed = (request, error) => ({ type: consts.MEDIA_SAVE_TO_GALELRY_FAILED, error, request })
-export const media_save_to_gallery = (request, data) => (dispatch) => {
+export const media_save_to_gallery = (request, data) => (dispatch, getState) => {
+    let axios = getState().smartcrud.config.axios;
+
     // dispatch(setPageLoadingTo(true, '', null))
     dispatch(media_save_to_gallery_started(request))
     return new Promise((resolve, reject) => {
