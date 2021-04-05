@@ -353,7 +353,7 @@ class SmartCrudBase extends Component {
     onSubmit = () => {
         let exported = this.exportData()
         if (!exported.filled) {
-            return WarningAlert('اخطار', 'پرکردن فیلد های ستاره دار اجباری می باشد')
+            return WarningAlert('پرکردن فیلد های ستاره دار اجباری می باشد')
         }
         let data = { ...exported.data }
 
@@ -375,12 +375,12 @@ class SmartCrudBase extends Component {
             .then((response) => {
                 console.log(response)
                 this.setEditModalTo(false)()
-                SuccessAlert('ایجاد', 'ایجاد با موفقیت انجام گردید')
+                SuccessAlert('ایجاد با موفقیت انجام گردید')
                 this.onClear()
             })
             .catch((error) => {
                 console.log(error.response)
-                DangerAlert('ایجاد', 'ایجاد با شکست مواجه شد')
+                DangerAlert('ایجاد با شکست مواجه شد')
             })
     }
 
@@ -439,7 +439,7 @@ class SmartCrudBase extends Component {
     onSubmitEdit = () => {
         let exported = this.exportData()
         if (!exported.filled) {
-            return WarningAlert('اخطار', 'پرکردن فیلد های ستاره دار اجباری می باشد')
+            return WarningAlert('پرکردن فیلد های ستاره دار اجباری می باشد')
         }
         let data = { ...exported.data }
 
@@ -461,12 +461,12 @@ class SmartCrudBase extends Component {
             .then((response) => {
                 console.log(response)
                 this.setEditModalTo(false)()
-                SuccessAlert('ویرایش', 'ویرایش با موفقیت انجام گردید')
+                SuccessAlert('ویرایش با موفقیت انجام گردید')
                 this.datatableRef.stableRefresh()
             })
             .catch((error) => {
                 console.log(error.response)
-                DangerAlert('ویرایش', 'ویرایش با شکست مواجه شد')
+                DangerAlert('ویرایش با شکست مواجه شد')
             })
     }
 
@@ -492,10 +492,10 @@ class SmartCrudBase extends Component {
                     )
                     .then(() => {
                         this.datatableRef.stableRefresh()
-                        SuccessAlert('حذف ' + (row.title || row.subtitle), 'عملیات حذف با موفقیت انجام گردید')
+                        SuccessAlert('عملیات حذف با موفقیت انجام گردید')
                     })
                     .catch(() => {
-                        DangerAlert('حذف ' + (row.title || row.subtitle), 'عملیات حذف با شکست مواجه شد')
+                        DangerAlert('عملیات حذف با شکست مواجه شد')
                     })
             },
         })

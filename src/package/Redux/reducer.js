@@ -9,7 +9,11 @@ const initState = {
     media_modal_show: false,
     media_selection_type: null,
     config: {},
-    pageLoading: false,
+    process_status: {
+        loading: false,
+        status: 'warning', //[success | failed | warning | none]
+        message: 'success',
+    },
     dialog: {
         isOpen: false,
     },
@@ -241,7 +245,12 @@ const smartcrudReducer = (state = initState, action) => {
             return { ...state }
 
         case consts.SET_PAGE_LOADING_TO:
-            return { ...state, pageLoading: action.pageLoading }
+            state.process_status = {
+                loading: action.to,
+                status: action.status,
+                message: action.message,
+            }
+            return { ...state }
         case consts.OPEN_DIALOG:
             state.dialog = { ...action.dialogConfig }
             state.dialog.isOpen = true

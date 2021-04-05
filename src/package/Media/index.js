@@ -501,7 +501,6 @@ class MediaBase extends Component {
     copy = (e) => {
         e.target.select()
         document.execCommand('copy')
-        SuccessAlert('', 'آدرس کپی شد')
     }
 
     renderDetailsContents = () => {

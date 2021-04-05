@@ -206,7 +206,7 @@ class HasMany extends Component {
                                 this.softRemoveItem(index)
                             })
                             .catch(() => {
-                                DangerAlert('', 'حذف رابطه با خطا مواجه شد')
+                                DangerAlert('حذف رابطه با خطا مواجه شد')
                             })
                     },
                 })
@@ -214,7 +214,7 @@ class HasMany extends Component {
                 this.softRemoveItem(index)
             }
         } else {
-            WarningAlert('', `حداقل تعداد ${this.props.label} باید ${this.state.minItems} عدد باشد`)
+            WarningAlert(`حداقل تعداد ${this.props.label} باید ${this.state.minItems} عدد باشد`)
         }
     }
 

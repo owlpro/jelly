@@ -428,20 +428,6 @@ span.refund_info_item {
         padding-right: 10px;
         padding-left: 10px;
         position: relative;
-        & > .pagination_effect {
-            content: '';
-            height: 39px;
-            min-width: 39px;
-            width: 39px;
-            z-index: 0;
-            right: 9px;
-            top: -2px;
-            border-radius: 10px;
-            border-color: #2196f3;
-            background-color: #2196f3;
-            position: absolute;
-            transition: right 0.3s ease-out;
-        }
     }
     & .page {
         height: 35px;

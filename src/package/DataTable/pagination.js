@@ -129,12 +129,6 @@ class Pagination extends React.Component {
                 this.props.onChangePage(page)
             }
             await this.props.setDTPaginationTo(this.state.key, page)
-            // let pageEl = $('.page' + this.state.key + '[page=' + page + ']')
-            // let parent = pageEl.parent()
-
-            // $('.pagination_effect' + '.PE' + this.state.key).css({
-            //     right: parent.innerWidth() - $('.page' + this.state.key + '[page=' + page + ']').position().left - 39,
-            // })
         }
     }
 
@@ -181,7 +175,6 @@ class Pagination extends React.Component {
                                 <ArrowForwardIcon />
                             </div>
                             <div className="pagination_pages">
-                                {/* <div className={'pagination_effect ' + ('PE' + this.state.key)}></div> */}
                                 {this.pagination()}
                             </div>
                             <div

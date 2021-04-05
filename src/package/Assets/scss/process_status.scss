@@ -1,0 +1,39 @@
+.sc_process_status_wrapper {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    position: relative;
+    & > span.sc_process_status_loader {
+        position: absolute;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        display: inline-flex;
+        align-items: center;
+    }
+    & > span.sc_process_status_state {
+        position: absolute;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        display: inline-flex;
+        align-items: center;
+        & > .sc_psc_s_success,
+        & > .sc_psc_s_warning,
+        & > .sc_psc_s_failed {
+            display: inline-flex;
+            align-items: center;
+            color: #dc3545;
+        }
+        & > .sc_psc_s_success {
+            color: #28a745;
+        }
+        & > .sc_psc_s_warning {
+            color: #ffc107;
+        }
+    }
+    & > div.sc_process_status_contents {
+        margin-right: 36px;
+    }
+}

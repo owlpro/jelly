@@ -44,6 +44,7 @@ import GetAppIcon from '@material-ui/icons/GetApp'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import './../Assets/scss/datatable.scss'
+import ProcessStatus from '../Components/ProcessStatus'
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
 class SmartCrudDataTable extends Component {
@@ -497,9 +498,6 @@ class SmartCrudDataTable extends Component {
 
         this.props.setDTPaginationTo(this.state.key, 1)
         this.row = 1
-        // $('.pagination_effect.PE' + this.state.key).css({
-        //     right: 9,
-        // })
     }
 
     onChangePage = async (page) => {
@@ -968,7 +966,7 @@ class SmartCrudDataTable extends Component {
                 }, 2000)
             })
             .catch((error) => {
-                DangerAlert('چاپ صفحات', 'عملیات با شکست مواجه شد')
+                DangerAlert('عملیات با شکست مواجه شد')
                 this.setState((state) => {
                     const ns = { ...state }
                     ns.print.started = false
@@ -1033,8 +1031,7 @@ class SmartCrudDataTable extends Component {
                 document.getElementById('SM_CSVLink').click()
             })
             .catch((err) => {
-                console.log(err)
-                DangerAlert('خروجی اطلاعات', 'عملیات با شکست مواجه شد')
+                DangerAlert('عملیات با شکست مواجه شد')
                 this.setState((state) => {
                     const ns = { ...state }
                     ns.export.started = false
@@ -1784,6 +1781,7 @@ class SmartCrudDataTable extends Component {
                         <div className="filterWrapper">
                             <div className="page_title_wrapper">
                                 <span className="page_title">{this.props.title || 'لیست اطلاعات'}</span>
+                                <ProcessStatus />
                             </div>
                             <div className="filterContainer-right">
                                 <div className="filterInputContainer" style={{ minWidth: 280 }}>

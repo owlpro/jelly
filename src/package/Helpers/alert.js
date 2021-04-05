@@ -1,35 +1,32 @@
-import { store } from "react-notifications-component";
-
+import { setPageLoadingTo } from '../Redux/action'
+import store from './../Redux/store'
 
 const Alert = (type, title, message) => {
     store.addNotification({
         title: title,
         message: message,
         type: type,
-        container: "top-center",
-        animationIn: ["animated", "fadeIn"],
-        animationOut: ["animated", "zoomOut"],
+        container: 'top-center',
+        animationIn: ['animated', 'fadeIn'],
+        animationOut: ['animated', 'zoomOut'],
         dismiss: {
             duration: 6000,
-            onScreen: true
-        }
-    });
-};
+            onScreen: true,
+        },
+    })
+}
 
-export const WarningAlert = (title, message) => {
-    Alert("warning", title, message);
-};
-export const DangerAlert = (title, message) => {
-    Alert("danger", title, message);
-};
-export const SuccessAlert = (title, message) => {
-    Alert("success", title, message);
-};
-export const InfoAlert = (title, message) => {
-    Alert("info", title, message);
-};
-export const PrimaryAlert = (title, message) => {
-    Alert("default", title, message);
-};
+export const WarningAlert = (message) => {
+    store.dispatch(setPageLoadingTo(false, message, 'warning'))
+}
+export const DangerAlert = (message) => {
+    store.dispatch(setPageLoadingTo(false, message, 'failed'))
+}
+export const SuccessAlert = (message) => {
+    store.dispatch(setPageLoadingTo(false, message, 'success'))
+}
+export const InfoAlert = (message) => {
+    store.dispatch(setPageLoadingTo(false, message, 'info'))
+}
 
-export default Alert;
+export default Alert

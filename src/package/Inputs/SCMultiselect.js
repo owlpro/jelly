@@ -59,7 +59,7 @@ class SCMultiselect extends Component {
                     ns.loading = false;
                     return ns;
                 });
-                DangerAlert('', error.message)
+                DangerAlert(error.message)
             })
         } else {
             this.afterSyncOptions();
