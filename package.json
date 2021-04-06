@@ -9,14 +9,14 @@
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "styled-components": "^5.2.1",
-        "react-data-table-component": "^6.11.7"
+        "react-data-table-component": "^6.11.7",
+        "@material-ui/pickers": "^3.3.10"
     },
     "dependencies": {
         "@date-io/jalaali": "1.x",
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "^4.0.0-alpha.57",
-        "@material-ui/pickers": "^3.3.10",
         "axios": "^0.21.1",
         "babel-loader": "^8.2.2",
         "jalali-moment": "^3.3.10",
@@ -97,6 +97,7 @@
         "webpack-cleanup-plugin": "^0.5.1",
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "3.7.1",
-        "webpack-node-externals": "^2.5.2"
+        "webpack-node-externals": "^2.5.2",
+        "@material-ui/pickers": "^3.3.10"
     }
 }
