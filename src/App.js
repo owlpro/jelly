@@ -6,7 +6,7 @@ class App extends Component {
         return (
             <div>
                 <SmartCrud
-                    route={'http://localhost:8080/api/v4/products'}
+                    route={'/api/v4/products'}
                     deletable
                     editable
                     inputs={[
@@ -94,21 +94,21 @@ class App extends Component {
                             label: 'مبلغ',
                             type: 'number',
                         },
-                        {
-                            selector: 'created_at',
-                            label: 'تاریخ1',
-                            type: 'datetime',
-                        },
-                        {
-                            selector: 'created_at2',
-                            label: 'تاریخ2',
-                            type: 'date',
-                        },
-                        {
-                            selector: 'created_at3',
-                            label: 'تاریخ3',
-                            type: 'time',
-                        },
+                        // {
+                        //     selector: 'created_at',
+                        //     label: 'تاریخ1',
+                        //     type: 'datetime',
+                        // },
+                        // {
+                        //     selector: 'created_at2',
+                        //     label: 'تاریخ2',
+                        //     type: 'date',
+                        // },
+                        // {
+                        //     selector: 'created_at3',
+                        //     label: 'تاریخ3',
+                        //     type: 'time',
+                        // },
                     ]}
                 />
             </div>

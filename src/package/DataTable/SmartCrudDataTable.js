@@ -1260,9 +1260,9 @@ class SmartCrudDataTable extends Component {
 
         this.row = 1
         let printColumns = this.state.columns.filter((item) => item.selector !== '__more_items__' && item.selector !== '__select__')
-        const DataTableComponent = this.props.smartcrud.config.datatable
+        // const DataTableComponent = this.props.smartcrud.config.datatable
 
-        if (!DataTableComponent) return <h1 className="text-danger">Datatable not loaded</h1>
+        // if (!DataTableComponent) return <h1 className="text-danger">Datatable not loaded</h1>
         return (
             <Fragment>
                 {this.renderSummationsModal()}
@@ -1916,9 +1916,7 @@ class SmartCrudDataTable extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    panel: state.panel,
     smartcrud: state.smartcrud,
-    config: state.smartcrud.config,
     axios: state.smartcrud.config.axios,
 })
 
