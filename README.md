@@ -1,13 +1,18 @@
-# a Banana 🍌 React Package For Smart Make CRUD
+# **DEVELOPING**
 
-# DEVELOPING
+## Build Easy CRUD With Backend
 
-```
-yarn add \
-    @date-io/jalaali@1.x \
-    @material-ui/pickers \
-    styled-components \
-    prop-types \
-    react-data-table-component \
-    jelly-smart-crud 
-```
+# Install
+
+## step 1 
+you need install [backend dependency](https://github.com/Alive2212/LaravelSmartRestful) on your laravel or lumen project
+
+## step 2 
+make a axios instance with your own config for requests
+
+
+
+
+## install package wia npm or yarn
+
+`npm i jelly-smart-crud` &nbsp; or &nbsp; `yarn add jelly-smart-crud`
