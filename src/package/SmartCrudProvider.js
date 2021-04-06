@@ -3,19 +3,23 @@ import Dependencies from './Dependencies'
 import { store_configs } from './Redux/action'
 import store from './Redux/store'
 
-import './Assets/scss/styles.scss'
+import { RTL } from './Components/Rtl'
+import './Assets/scss/styleLoader.scss'
 
 class SmartCrudProvider extends React.Component {
     UNSAFE_componentWillMount() {
         let propsData = { ...this.props }
         delete propsData.children
         store.dispatch(store_configs(propsData))
+        document.head.innerHTML = '<!-- jss-insertion-point -->' + document.head.innerHTML
     }
 
     render() {
         return (
             <Fragment>
-                <Dependencies />
+                <RTL>
+                    <Dependencies />
+                </RTL>
                 {this.props.children}
             </Fragment>
         )

@@ -5,6 +5,19 @@
     & .mui_menu_item {
         display: flex;
         justify-content: space-between;
-        flex-direction: row-reverse;
+    }
+}
+.dt_close_btn {
+    position: absolute;
+    right: -13px;
+    top: -13px;
+    background-color: white;
+    height: 40px;
+    min-width: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    &:hover {
+        background-color: #f0f0f0;
     }
 }

@@ -1,6 +1,7 @@
 import store from './../Redux/store'
 import moment from 'jalali-moment'
 import { openDialog } from '../Redux/action'
+import "./string.js";
 
 export const select = (selector, object) => {
     let splitedSelector = selector.split('.')

@@ -43,9 +43,9 @@ import { CSVLink } from 'react-csv'
 import GetAppIcon from '@material-ui/icons/GetApp'
 import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
-import './../Assets/scss/datatable.scss'
 import ProcessStatus from '../Components/ProcessStatus'
 import printStyles from '!!raw-loader!./../Assets/css/list_print.css'
+import DatatableBaseComponent from 'react-data-table-component'
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
@@ -1268,7 +1268,7 @@ class SmartCrudDataTable extends Component {
                 {this.renderSummationsModal()}
                 {this.renderMorphManyRelations()}
                 <div className="hide" id={'print_content' + this.state.key}>
-                    <DataTableComponent title={this.props.title || 'لیست اطلاعات'} data={this.state.print.data} columns={printColumns} />
+                    <DatatableBaseComponent title={this.props.title || 'لیست اطلاعات'} data={this.state.print.data} columns={printColumns} />
                 </div>
                 <div className="custom_datatable_wrapper">
                     <div className={'custom_datatable_filter ' + (this.state.openFilters ? 'openFilters' : '')}>
@@ -1330,7 +1330,6 @@ class SmartCrudDataTable extends Component {
                                                 >
                                                     <div className="order_by_type">
                                                         <Switch
-                                                            // width={56}
                                                             checked={sortByIsChecked}
                                                             onColor="#2196f3"
                                                             offColor="#e0e0e0"
@@ -1378,6 +1377,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1411,6 +1411,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1459,6 +1460,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1498,6 +1500,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1553,6 +1556,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1566,7 +1570,7 @@ class SmartCrudDataTable extends Component {
                                                                     disableToolbar
                                                                     onOpen={this.activeShrink(from_date_selector)}
                                                                     onClose={this.deactivateShrink(from_date_selector)}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     margin="dense"
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
@@ -1589,7 +1593,7 @@ class SmartCrudDataTable extends Component {
                                                                     disableToolbar
                                                                     onOpen={this.activeShrink(to_date_selector)}
                                                                     onClose={this.deactivateShrink(to_date_selector)}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     margin="dense"
                                                                     oklabel={this.state.oklabel}
                                                                     cancellabel={this.state.cancellabel}
@@ -1615,6 +1619,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1636,7 +1641,7 @@ class SmartCrudDataTable extends Component {
                                                                                 ? true
                                                                                 : false,
                                                                     }}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     margin="dense"
                                                                     label={'از ' + item.label}
                                                                     labelFunc={(date) => (date ? date.format('jYYYY/jMM/jDD - HH:mm') : '')}
@@ -1660,7 +1665,7 @@ class SmartCrudDataTable extends Component {
                                                                                 ? true
                                                                                 : false,
                                                                     }}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     margin="dense"
                                                                     label={'تا ' + item.label}
                                                                     labelFunc={(date) => (date ? date.format('jYYYY/jMM/jDD - HH:mm') : '')}
@@ -1679,6 +1684,7 @@ class SmartCrudDataTable extends Component {
                                                 return (
                                                     <Grid
                                                         container
+                                                        spacing={3}
                                                         key={key}
                                                         className="dt_filter_item"
                                                         style={{
@@ -1700,7 +1706,7 @@ class SmartCrudDataTable extends Component {
                                                                                 ? true
                                                                                 : false,
                                                                     }}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     margin="dense"
                                                                     label={'از ' + item.label}
                                                                     labelFunc={(date) => (date ? date.format('HH:mm') : '')}
@@ -1724,7 +1730,7 @@ class SmartCrudDataTable extends Component {
                                                                                 ? true
                                                                                 : false,
                                                                     }}
-                                                                    variant={item.variant && item.variant === 'inline' ? 'inline' : null}
+                                                                    variant={item.variant || 'inline'}
                                                                     hiddenLabel={true}
                                                                     margin="dense"
                                                                     label={'تا ' + item.label}
@@ -1881,7 +1887,7 @@ class SmartCrudDataTable extends Component {
                             </div>
                         </div>
 
-                        <DataTableComponent
+                        <DatatableBaseComponent
                             progressComponent={<LoadingList />}
                             highlightOnHover
                             title="لیست اطلاعات"

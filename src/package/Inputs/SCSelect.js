@@ -15,7 +15,6 @@ class SCSelect extends Component {
     afterSyncOptions = () => {}
 
     UNSAFE_componentWillMount() {
-        console.log(this.props.axios)
         if (this.props.value) {
             this.afterSyncOptions = () => {
                 const options = this.state.options.filter((item) => item.value === this.props.value)

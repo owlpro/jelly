@@ -9,7 +9,6 @@ import RefreshIcon from '@material-ui/icons/Refresh'
 import ClearRoundedIcon from '@material-ui/icons/ClearRounded'
 import { RandomStr, unique, humanFileSize } from '../Helpers/general'
 import { toJalaliDate } from '../Helpers/general'
-import { SuccessAlert } from '../Helpers/alert'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 class MediaBase extends Component {
@@ -206,7 +205,7 @@ class MediaBase extends Component {
 
         return (
             <Modal className="sc-modal-wrapper" size="xl" open={this.props.show} onClose={this.closeGeneralModal}>
-                <Box className="sc-modal-inner">
+                <Box className="sc-modal-inner sc-media-modal-inner">
                     <input multiple onChange={this.onFileInputChange} ref={(el) => (this.fileInputRef = el)} type="file" className="hide" />
                     {this.renderDetailsContents()}
                     <FileDrop
@@ -233,8 +232,8 @@ class MediaBase extends Component {
                                             renderThumbVertical={(props) => <div {...props} className="thumb-vertical" />}
                                             renderTrackVertical={(props) => <div {...props} className="track-vertical" />}
                                         >
-                                            <Grid item xs={12} className="sm_media_type_categories_inner">
-                                                <Grid container className="sm_media_type_categories" spacing={3}>
+                                            <div className="sm_media_type_categories_inner">
+                                                <Grid container className="sm_media_type_categories" spacing={2}>
                                                     {formats.length ? (
                                                         formats.map((format, key) => (
                                                             <Grid item xs={6} className="sm_media_type_category_wrapper" key={key}>
@@ -254,7 +253,7 @@ class MediaBase extends Component {
                                                         </div>
                                                     )}
                                                 </Grid>
-                                            </Grid>
+                                            </div>
                                         </Scrollbars>
                                         {/* </ReactScrollbar> */}
                                         {/* <div className="sm_show_all_categories_wrapper">
@@ -305,7 +304,7 @@ class MediaBase extends Component {
                                         onScroll={this.onScrollBody}
                                     >
                                         <div className="sm_media_contents">
-                                            <Grid item className="sm_media_contents_inner m-0">
+                                            <div className="sm_media_contents_inner">
                                                 <Grid container className="sm_media_item_wrapper" spacing={3}>
                                                     {mediaToShow.map((item) => this.renderMediaItem(item))}
                                                 </Grid>
@@ -332,7 +331,7 @@ class MediaBase extends Component {
                                                         </div>
                                                     )
                                                 ) : null}
-                                            </Grid>
+                                            </div>
                                         </div>
                                     </Scrollbars>
                                 </div>
@@ -367,8 +366,7 @@ class MediaBase extends Component {
             }
         }
 
-        // TODO || make config
-        // return encodeURI(config.baseUrl + "" + (child ? child.path : media.path));
+        return encodeURI(this.props.baseURL + "" + (child ? child.path : media.path));
         return ''
     }
 
@@ -506,9 +504,7 @@ class MediaBase extends Component {
     renderDetailsContents = () => {
         let media = this.state.details.data
         let imageUrl = media && this.#isImage(media) ? this.#getImageThumbnailedUrl(media) : ''
-        // TODO | Make Config
-        // let path = media ? config.baseUrl.replace(/\/$/, '') + "/" + media.path.replace(/^\//, '') : '';
-        let path = ''
+        let path = media ? this.props.this.props.baseURL.replace(/\/$/, '') + "/" + media.path.replace(/^\//, '') : '';
         return media ? (
             <Fragment>
                 <div className={(this.state.details.show ? '' : 'sm_dt_wrapper_hide ') + 'sm_dt_wrapper'}>
@@ -589,6 +585,8 @@ const mapStateToProps = (state) => ({
     show: state.smartcrud.media_modal_show,
     selection_type: state.smartcrud.media_selection_type,
     onSelectCallBack: state.smartcrud.media_on_select,
+    baseURL: state.smartcrud.config.axios.defaults.baseURL,
+    
 })
 
 const mapDispatchToProps = (dispatch) => ({
