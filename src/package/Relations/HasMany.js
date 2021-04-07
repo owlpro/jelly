@@ -271,6 +271,8 @@ class HasMany extends Component {
                     }
                     return output
                 }
+
+                return {};
             })
         })
 

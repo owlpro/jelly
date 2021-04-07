@@ -1,21 +1,15 @@
 import store from './../Redux/store'
 import moment from 'jalali-moment'
 import { openDialog } from '../Redux/action'
-import "./string.js";
+import './string.js'
 
-/**
- * 
- * @param {*} selector 
- * @param {*} object 
- * @returns 
- */
 export const select = (selector, object) => {
-    let splitedSelector = selector.split('.')
+    let splitSelector = selector.split('.')
 
-    if (splitedSelector.length > 1) {
+    if (splitSelector.length > 1) {
         let selectingObject = { ...object }
 
-        splitedSelector.forEach((selectorItem) => {
+        splitSelector.forEach((selectorItem) => {
             if (selectingObject && selectingObject.hasOwnProperty(selectorItem)) {
                 selectingObject = selectingObject[selectorItem]
             }
@@ -25,16 +19,15 @@ export const select = (selector, object) => {
 
     return object.hasOwnProperty(selector) ? object[selector] : null
 }
-export const setToObject = (selector, value, object) => {
-    // let insertingObject = {...object};
-    let splitedSelector = selector.split('.')
-    // console.log(selector, value, insertingObject);
 
-    if (splitedSelector.length > 1) {
+export const setToObject = (selector, value, object) => {
+    let splitSelector = selector.split('.')
+
+    if (splitSelector.length > 1) {
         let workingObject = object
 
-        splitedSelector.forEach((selectorItem, index) => {
-            let isLastItem = index === splitedSelector.length - 1
+        splitSelector.forEach((selectorItem, index) => {
+            let isLastItem = index === splitSelector.length - 1
 
             if (!workingObject.hasOwnProperty(selectorItem) && !isLastItem) {
                 workingObject[selectorItem] = {}
@@ -94,7 +87,7 @@ export const humanFileSize = (bytes, si = true, dp = 1) => {
 }
 
 export const routeToKey = (route) => {
-    return route.replace(/^http:\/\/|^https:\/\/|[:\/]/gim, '_')
+    return route.replace(/^http:\/\/|^https:\/\/|[:/.]/gim, '_')
 }
 
 export const Number33 = (value) => {

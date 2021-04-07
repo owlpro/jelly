@@ -74,7 +74,7 @@ class SCSelect extends Component {
             if (this.state.options.length) {
                 this.setState((state) => {
                     const ns = { ...state }
-                    ns.value = this.state.options.filter((item) => item.value == value)[0]
+                    ns.value = this.state.options.filter((item) => item.value === value)[0]
                     return ns
                 })
             } else {

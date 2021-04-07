@@ -7,6 +7,7 @@ import { p2e } from '../Helpers/general'
 import { set_media_modal_show_to } from '../Redux/action'
 import { Fragment } from 'react'
 import FileFormat from '../Media/FileFormat'
+import AddIcon from '@material-ui/icons/Add';
 
 class SCImage extends Component {
     state = {
@@ -88,7 +89,7 @@ class SCImage extends Component {
                             <Fragment>
                                 <div className="scimage_input_wrapper_image_bg"></div>
                                 <div className="scimage_input_contents">
-                                    <i className={(this.state.error ? 'text-danger' : '') + ' feather icon-plus-square'}></i>
+                                    <AddIcon className={(this.state.error ? 'text-danger' : '')} />
                                 </div>
                             </Fragment>
                         ) : (
@@ -98,7 +99,7 @@ class SCImage extends Component {
                                         <Fragment>
                                             <div className="scimage_input_image_selected_effect" style={{ backgroundImage: `url('${baseUrl + child.path}')` }}></div>
                                                 <div className="scimage_input_image_selected_image">
-                                                    <img src={baseUrl + child.path} />
+                                                    <img src={baseUrl + child.path} alt="" />
                                                 </div>
                                         </Fragment>
                                     ) : (

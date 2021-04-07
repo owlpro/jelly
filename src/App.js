@@ -27,7 +27,6 @@ class App extends Component {
             searchable: false,
             grow: 3,
             cell: (row) => {
-                console.log(row)
                 let roles = row.merchants.map((item) => (item.pivot ? item.pivot.type : null)).filter((item) => item !== null)
                 return roles.map((role) => role).join(', ')
             },

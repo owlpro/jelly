@@ -140,6 +140,7 @@ class HasOne extends Component {
                     value: value,
                 }
             }
+            return {};
         })
 
         values = values.filter((item) => typeof item !== 'undefined')

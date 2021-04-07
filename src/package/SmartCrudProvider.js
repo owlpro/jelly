@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 
 import { RTL } from './Components/Rtl'
 import './Assets/scss/styleLoader.scss'
-import { Button } from '@material-ui/core'
 
 /**
  * Usage :
@@ -28,7 +27,6 @@ class SmartCrudProvider extends React.Component {
 
     UNSAFE_componentWillMount() {
         document.head.innerHTML = '<!-- jss-insertion-point -->' + document.head.innerHTML
-
         let propsData = { ...this.props }
         delete propsData.children
         store.dispatch(store_configs(propsData))
@@ -38,7 +36,6 @@ class SmartCrudProvider extends React.Component {
         return (
             <Fragment>
                 <RTL>
-                    <Button></Button>
                     <Dependencies />
                 </RTL>
                 {this.props.children}

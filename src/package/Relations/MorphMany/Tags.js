@@ -7,7 +7,8 @@ import SearchIcon from '@material-ui/icons/Search'
 import DoneIcon from '@material-ui/icons/Done'
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded'
 import ReplayRoundedIcon from '@material-ui/icons/ReplayRounded'
-
+import CloseIcon from '@material-ui/icons/Close';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 class Tags extends Component {
     state = {
         show: false,
@@ -45,7 +46,7 @@ class Tags extends Component {
         this.#setStateItem('key', key)
     }
 
-    componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps() {
         this.setState((state) => {
             let ns = { ...state }
             if (this.props.morph[this.state.type] && this.props.morph[this.state.type][this.state.key]) {
@@ -220,7 +221,7 @@ class Tags extends Component {
                                                 <div key={index} className="smartcrud_morph_tag_item">
                                                     <div className="smartcrud_tag_item_content">
                                                         <span>
-                                                            <i className="feather icon-hash"></i>
+                                                            <ArrowBackIcon />
                                                         </span>
                                                         <span> {tag[this.selector]} </span>
                                                     </div>
@@ -229,7 +230,7 @@ class Tags extends Component {
                                                             <CircularProgress className="smartcrud_tag_item_deleting" />
                                                         ) : (
                                                             <IconButton size="small" onClick={this.removeTag(tag)}>
-                                                                <i className="feather icon-x text-danger"></i>
+                                                                <CloseIcon className="text-danger" />
                                                             </IconButton>
                                                         )}
                                                     </div>
@@ -268,7 +269,7 @@ class Tags extends Component {
                                             readOnly: this.state.posting,
                                             startAdornment: (
                                                 <InputAdornment position="start">
-                                                    <i className="feather icon-hash"></i>
+                                                    <ArrowBackIcon />
                                                 </InputAdornment>
                                             ),
                                             endAdornment: (

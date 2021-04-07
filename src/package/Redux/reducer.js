@@ -95,7 +95,7 @@ const smartcrudReducer = (state = initState, action) => {
             return { ...state }
         case consts.UPDATE_A_ROW_STATE:
             try {
-                if (!action.row.id) throw '[UPDATE_A_ROW_STATE] row have not a uniq id / Datatable Reducer'
+                if (!action.row.id) new Error('[UPDATE_A_ROW_STATE] row have not a uniq id / Datatable Reducer')
 
                 key = routeToKey(action.key)
                 state[key].data = state[key].data.map((item) => {

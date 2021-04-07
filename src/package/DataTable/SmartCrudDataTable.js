@@ -46,6 +46,8 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import ProcessStatus from '../Components/ProcessStatus'
 import printStyles from '!!raw-loader!./../Assets/css/list_print.css'
 import DatatableBaseComponent from 'react-data-table-component'
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
@@ -184,7 +186,7 @@ class SmartCrudDataTable extends Component {
             query = query.concat(this.props.append)
         }
 
-        console.log(query)
+        // console.log(query)
 
         return '?' + encodeURI(query.join('&'))
     }
@@ -415,7 +417,7 @@ class SmartCrudDataTable extends Component {
                             moreItems.push({
                                 disabled: false,
                                 label: 'مدیریت تگ ها',
-                                icon: <i className="feather icon-tag text-success"></i>,
+                                icon: <LocalOfferIcon />,
                                 action: () => {
                                     this.morphManyRelations.tags.open(this.props.morphMapKey, row)
                                 },
@@ -1878,7 +1880,7 @@ class SmartCrudDataTable extends Component {
                                         color="primary"
                                         className="mui_filter_btn mr-2"
                                         onClick={this.toggleShowFilters}
-                                        startIcon={<i className="feather icon-filter"></i>}
+                                        startIcon={<FilterListIcon />}
                                     >
                                         {this.state.useFilters.length > 0 ? <span className="dt_filters_count">{this.state.useFilters.length}</span> : ''}
                                         <span> فیلتر </span>

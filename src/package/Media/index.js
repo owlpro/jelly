@@ -10,6 +10,9 @@ import ClearRoundedIcon from '@material-ui/icons/ClearRounded'
 import { RandomStr, unique, humanFileSize } from '../Helpers/general'
 import { toJalaliDate } from '../Helpers/general'
 import { Scrollbars } from 'react-custom-scrollbars'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
 
 class MediaBase extends Component {
     state = {
@@ -79,6 +82,7 @@ class MediaBase extends Component {
                             if (item.key === key) {
                                 item.event.status = 'success'
                             }
+                            return null
                         })
                         return ns
                     })
@@ -92,6 +96,7 @@ class MediaBase extends Component {
                             if (item.key === key) {
                                 item.event.status = 'failed'
                             }
+                            return null
                         })
                         return ns
                     })
@@ -110,7 +115,7 @@ class MediaBase extends Component {
             let ns = { ...state }
             let exists = ns.uploadingItems.filter((item) => item.key === key).length > 0
             if (exists) {
-                ns.uploadingItems.map((item) => {
+                ns.uploadingItems.forEach((item) => {
                     if (item.key === key) {
                         item.event = event
                     }
@@ -218,7 +223,7 @@ class MediaBase extends Component {
                         className="sm_media_file_drop"
                     >
                         <div className={'sm_file_frop_effect ' + this.state.drop_status}>
-                            <i className="feather icon-upload-cloud"></i>
+                            <CloudUploadIcon />
                         </div>
                         <Box p={2} className="pr-0">
                             <div className="sm_media_wrapper">
@@ -264,7 +269,7 @@ class MediaBase extends Component {
                                     <div className="sm_media_upload_button_wrapper">
                                         <Button variant="contained" color="primary" className="shadow-0 sm_media_upload_button" onClick={this.onTargetClick}>
                                             <span>آپلود فایل جدید</span>
-                                            <i className="feather icon-upload-cloud"></i>
+                                            <CloudUploadIcon />
                                         </Button>
                                     </div>
                                 </div>
@@ -273,7 +278,7 @@ class MediaBase extends Component {
                                     <div className={(this.state.navbar_has_shadow ? 'with_shadow ' : '') + 'sm_media_navbar'}>
                                         <div className="sm_media_navbar_right">
                                             <IconButton className="sm_toggle_sidebar_btn" onClick={this.toggleSidebar}>
-                                                <img src={close} className="sm_toggle_sidebar_img" draggable={false} />
+                                                <img src={close} className="sm_toggle_sidebar_img" draggable={false} alt="" />
                                             </IconButton>
                                             <TextField
                                                 inputRef={(el) => (this.search = el)}
@@ -325,8 +330,8 @@ class MediaBase extends Component {
                                                     ) : (
                                                         <div className="sm_media_message">
                                                             <span className="sm_media_msg_title">هیچ محتوایی آپلود نکرده اید</span>
-                                                            <IconButton onClick={this.resetSearch} onClick={this.onTargetClick}>
-                                                                <i className="feather icon-upload-cloud"></i>
+                                                            <IconButton onClick={this.resetSearch}>
+                                                                <CloudUploadIcon />
                                                             </IconButton>
                                                         </div>
                                                     )
@@ -366,14 +371,12 @@ class MediaBase extends Component {
             }
         }
 
-        return encodeURI(this.props.baseURL + "" + (child ? child.path : media.path));
-        return ''
+        return encodeURI(this.props.baseURL + '' + (child ? child.path : media.path))
     }
 
     onMediaClick = (item) => () => {
         let selectionType = this.props.selection_type
         if (selectionType === 'single') {
-            console.log(this.props.selection_type)
             this.props.onSelectCallBack(item)
             this.closeGeneralModal()
         }
@@ -414,22 +417,24 @@ class MediaBase extends Component {
             case 'pendding':
                 return (
                     <div className="sm_uploading_status_confirming">
-                        <i className="feather icon-upload-cloud sm_uploading_status_confirming_icon"></i>
+                        <CloudUploadIcon className="sm_uploading_status_confirming_icon" />
                         <CircularProgress color="inherit" />
                     </div>
                 )
             case 'success':
                 return (
                     <span className="upload_success_icon">
-                        <i className="feather icon-check"></i>
+                        <CheckIcon />
                     </span>
                 )
             case 'failed':
                 return (
                     <span className="upload_failed_icon">
-                        <i className="feather icon-x"></i>
+                        <CloseIcon />
                     </span>
                 )
+            default:
+                return null
         }
     }
 
@@ -504,12 +509,12 @@ class MediaBase extends Component {
     renderDetailsContents = () => {
         let media = this.state.details.data
         let imageUrl = media && this.#isImage(media) ? this.#getImageThumbnailedUrl(media) : ''
-        let path = media ? this.props.this.props.baseURL.replace(/\/$/, '') + "/" + media.path.replace(/^\//, '') : '';
+        let path = media ? this.props.this.props.baseURL.replace(/\/$/, '') + '/' + media.path.replace(/^\//, '') : ''
         return media ? (
             <Fragment>
                 <div className={(this.state.details.show ? '' : 'sm_dt_wrapper_hide ') + 'sm_dt_wrapper'}>
                     <IconButton className="sm_dt_close" size={'small'} onClick={this.onCloseMediaDetails}>
-                        <i className="feather icon-x"></i>
+                        <CloseIcon />
                     </IconButton>
                     <div className="sm_dt_image" style={{ backgroundImage: `url('${imageUrl}')` }}>
                         {!this.#isImage(media) ? <FileFormat format={media.format} /> : null}
@@ -586,7 +591,6 @@ const mapStateToProps = (state) => ({
     selection_type: state.smartcrud.media_selection_type,
     onSelectCallBack: state.smartcrud.media_on_select,
     baseURL: state.smartcrud.config.axios.defaults.baseURL,
-    
 })
 
 const mapDispatchToProps = (dispatch) => ({

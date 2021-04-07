@@ -95,7 +95,7 @@ class FileFormat extends Component {
         if (icon) {
             return (
                 <Fragment>
-                    <img src={icon} {...this.props} draggable={false} />
+                    <img src={icon} {...this.props} draggable={false} alt={this.props.format} />
                 </Fragment>
             )
         }

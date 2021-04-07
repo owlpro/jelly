@@ -26,7 +26,8 @@ import { DangerAlert, SuccessAlert, WarningAlert } from './Helpers/alert'
 import { select, setToObject } from './Helpers/general'
 import SCImage from './Inputs/SCImage'
 import SCIncrements from './Inputs/SCIncrements'
-
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import AddIcon from '@material-ui/icons/Add';
 class SmartCrudBase extends Component {
     state = {
         ...this.props,
@@ -281,6 +282,7 @@ class SmartCrudBase extends Component {
                     value: value,
                 }
             }
+            return {}
         })
 
         let outputData = {}
@@ -373,13 +375,11 @@ class SmartCrudBase extends Component {
                 data
             )
             .then((response) => {
-                console.log(response)
                 this.setEditModalTo(false)()
                 SuccessAlert('ایجاد با موفقیت انجام گردید')
                 this.onClear()
             })
             .catch((error) => {
-                console.log(error.response)
                 DangerAlert('ایجاد با شکست مواجه شد')
             })
     }
@@ -393,7 +393,7 @@ class SmartCrudBase extends Component {
             hasOneRelation.clear()
         })
 
-        this.relations.hasMany.map((hasManyRelation) => {
+        this.relations.hasMany.forEach((hasManyRelation) => {
             hasManyRelation.clear()
         })
     }
@@ -510,7 +510,7 @@ class SmartCrudBase extends Component {
                             label={
                                 <div className="d-flex align-items-center">
                                     <span>{this.props.title || 'لیست اطلاعات'}</span>
-                                    <i className="feather icon-list mr-2 text-primary"></i>
+                                    <FormatListBulletedIcon />
                                 </div>
                             }
                         />
@@ -519,7 +519,7 @@ class SmartCrudBase extends Component {
                                 label={
                                     <div className="d-flex align-items-center">
                                         <span>ایجاد</span>
-                                        <i className="feather icon-plus mr-2 text-primary"></i>
+                                        <AddIcon />
                                     </div>
                                 }
                             />

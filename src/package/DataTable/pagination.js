@@ -1,3 +1,5 @@
+/*eslint no-useless-concat: "error"*/
+
 import React from 'react'
 import { connect } from 'react-redux'
 import Select from '@material-ui/core/Select'
@@ -48,7 +50,7 @@ class Pagination extends React.Component {
         let pagination = [
             <div
                 key="first_page"
-                className={'page ' + ('page' + this.state.key + ' ') + (current_page === 1 ? 'active_page' : '')}
+                className={'page ' + String(('page' + this.state.key + ' ') + (current_page === 1 ? 'active_page' : ''))}
                 page={1}
                 onClick={this.getPage(1)}
             >
@@ -85,7 +87,7 @@ class Pagination extends React.Component {
             for (let i = firstPage + 1; i <= lastPage - 1; i++) {
                 let activeClass = current_page === i ? 'active_page' : ''
                 pagination.push(
-                    <div key={i} page={i} className={'page ' + ('page' + this.state.key + ' ') + activeClass} onClick={this.getPage(i)}>
+                    <div key={i} page={i} className={'page ' + String(('page' + this.state.key + ' ') + activeClass)} onClick={this.getPage(i)}>
                         {i}
                     </div>
                 )
@@ -102,7 +104,7 @@ class Pagination extends React.Component {
             for (let i = 2; i <= totalPage - 1; i++) {
                 let activeClass = current_page === i ? 'active_page' : ''
                 pagination.push(
-                    <div key={i} page={i} className={'page ' + ('page' + this.state.key + ' ') + activeClass} onClick={this.getPage(i)}>
+                    <div key={i} page={i} className={'page ' + String(('page' + this.state.key + ' ') + activeClass)} onClick={this.getPage(i)}>
                         {i}
                     </div>
                 )
@@ -111,7 +113,7 @@ class Pagination extends React.Component {
         pagination.push(
             <div
                 key="last_page"
-                className={'page ' + ('page' + this.state.key + ' ') + (current_page === totalPage ? 'active_page' : '')}
+                className={'page ' + String(('page' + this.state.key + ' ') + (current_page === totalPage ? 'active_page' : ''))}
                 page={totalPage}
                 onClick={this.getPage(totalPage)}
             >
@@ -169,13 +171,11 @@ class Pagination extends React.Component {
                 </Grid>
                 <Grid item xs={6} className="mb-0">
                     {this.props.lastPage > 1 ? (
-                        <div className={'pagination ' + ('private_pagination' + this.state.key)}>
+                        <div className={'pagination ' + String(('private_pagination' + this.state.key))}>
                             <div key="prev_page" className="changePage" onClick={this.getPage(current_page === 1 ? current_page : current_page - 1)}>
                                 <ArrowForwardIcon />
                             </div>
-                            <div className="pagination_pages">
-                                {this.pagination()}
-                            </div>
+                            <div className="pagination_pages">{this.pagination()}</div>
                             <div
                                 key="next_page"
                                 className="changePage"

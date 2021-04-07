@@ -41,38 +41,38 @@ class Attachments extends Component {
         this.fileInputRef.click()
     }
 
-    onFileInputChange = (event) => {
-        const fileList = event.target.files
-        this.onSelectFile(fileList)
-    }
+    // onFileInputChange = (event) => {
+    //     const fileList = event.target.files
+    //     this.onSelectFile(fileList)
+    // }
 
-    onDrop = (fileList) => {
-        this.onSelectFile(fileList)
-    }
+    // onDrop = (fileList) => {
+    //     this.onSelectFile(fileList)
+    // }
 
-    onSelectFile = (fileList) => {
-        console.log(fileList)
-    }
+    // onSelectFile = (fileList) => {
+    //     // console.log(fileList)
+    // }
 
-    onDragOver = () => {
-        console.log('onDragOver')
-    }
+    // onDragOver = () => {
+    //     console.log('onDragOver')
+    // }
 
-    onDragLeave = () => {
-        console.log('onDragLeave')
-    }
+    // onDragLeave = () => {
+    //     console.log('onDragLeave')
+    // }
 
-    onFrameDrop = () => {
-        console.log('onFrameDrop')
-    }
+    // onFrameDrop = () => {
+    //     console.log('onFrameDrop')
+    // }
 
-    onFrameDragEnter = () => {
-        console.log('onFrameDragEnter')
-    }
+    // onFrameDragEnter = () => {
+    //     console.log('onFrameDragEnter')
+    // }
 
-    onFrameDragLeave = () => {
-        console.log('onFrameDragLeave')
-    }
+    // onFrameDragLeave = () => {
+    //     console.log('onFrameDragLeave')
+    // }
 
     render() {
         return (

@@ -4,7 +4,7 @@ import { RTL } from './Components/Rtl'
 import store from './Redux/store'
 import SmartCrudBase from './SmartCrudBase'
 
-export default function (props) {
+function SmartCrud(props) {
     return (
         <Provider store={store}>
             <RTL>
@@ -13,3 +13,5 @@ export default function (props) {
         </Provider>
     )
 }
+
+export default SmartCrud

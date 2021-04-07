@@ -77,7 +77,6 @@ class SCBirthday extends Component {
                             onChange={this.onChange}
                             okLabel="تایید"
                             cancelLabel="بازگشت"
-                            error={false}
                             helperText=""
                             InputLabelProps={{
                                 shrink: this.state.value ? true : false,

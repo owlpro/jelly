@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { p2e } from "../Helpers/general";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 class SCIncrements extends Component {
 
@@ -80,30 +82,14 @@ class SCIncrements extends Component {
                         </span>
                         <div className="sc_increments_input_inner">
                             <Button variant="contained" color="primary" className="shadow-0" onClick={this.increment}>
-                                <i className="feather icon-plus"></i>
+                                <AddIcon />
                             </Button>
                             <span className="sc_increment_input_value">{this.state.value}</span>
                             <Button variant="contained" color="secondary" className="shadow-0" onClick={this.decrement}>
-                                <i className="feather icon-minus"></i>
+                                <RemoveIcon />
                             </Button>
                         </div>
                     </div>
-                    {/* <TextField
-                        fullWidth
-                        type="text"
-                        margin="dense"
-                        variant="outlined"
-                        className={this.props.direction === "ltr" ? "sm_input_ltr" : "sm_input_rtl"}
-                        error={this.state.error}
-                        onFocus={this.onFocus}
-                        // onKeyDown={(e) => console.log(e.target.value)}
-                        value={this.state.value}
-                        writeable={false}
-                        // inputProps={{"aria-readonly": true}}
-                        // label={this.state.isRequired ? (<React.Fragment>{this.state.label} <span className="smart_crud_label_required">*</span></React.Fragment>) : this.state.label}
-                        name={this.state.selector}
-                        onChange={this.onChange}
-                    /> */}
                 </Grid>
             </React.Fragment>
         )
