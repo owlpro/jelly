@@ -6,10 +6,24 @@ import PropTypes from 'prop-types'
 
 import { RTL } from './Components/Rtl'
 import './Assets/scss/styleLoader.scss'
+import { Button } from '@material-ui/core'
 
+/**
+ * Usage :
+ * ```js
+ * ReactDOM.render(
+ *   <SmartCrudProvider>
+ *       <App />
+ *  </SmartCrudProvider>,
+ *   document.getElementById('root')
+ * )
+ * ```
+ *
+ * @augments {React.Component<{axios:instanceOf(axios).isRequired}>}
+ */
 class SmartCrudProvider extends React.Component {
     static propTypes = {
-        axios: PropTypes.object.isRequired,
+        axios: PropTypes.func.isRequired,
     }
 
     UNSAFE_componentWillMount() {
@@ -24,6 +38,7 @@ class SmartCrudProvider extends React.Component {
         return (
             <Fragment>
                 <RTL>
+                    <Button></Button>
                     <Dependencies />
                 </RTL>
                 {this.props.children}
