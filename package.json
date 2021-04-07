@@ -1,6 +1,6 @@
 {
     "name": "jelly-smart-crud",
-    "version": "1.0.80",
+    "version": "1.0.81",
     "private": false,
     "main": "./dist/module.bundle.js",
     "license": "MIT",
