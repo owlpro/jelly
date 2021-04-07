@@ -1,4 +1,4 @@
 {
     "presets": ["@babel/env", "@babel/react"],
-    "plugins": ["@babel/plugin-proposal-class-properties", "transform-object-assign"]
+    "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }], "transform-object-assign"]
 }
