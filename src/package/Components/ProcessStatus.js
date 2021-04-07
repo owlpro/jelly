@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import CloseIcon from '@material-ui/icons/Close'
 import CheckIcon from '@material-ui/icons/Check'
 import WarningIcon from '@material-ui/icons/Warning'
-import './../Assets/scss/process_status.scss'
 class ProcessStatus extends Component {
     state = {
         show: false,

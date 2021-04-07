@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 import { SmartCrudProvider } from './module'
-import ReactDataTableComponent from 'react-data-table-component'
 import axios from './axios'
+import './index.scss'
 
 ReactDOM.render(
-    <SmartCrudProvider datatable={ReactDataTableComponent} axios={axios}>
+    <SmartCrudProvider axios={axios}>
         <App />
     </SmartCrudProvider>,
     document.getElementById('root')

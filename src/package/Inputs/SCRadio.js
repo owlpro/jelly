@@ -61,7 +61,7 @@ class SCRadio extends Component {
     render() {
         return (
             <React.Fragment>
-                <Grid item xs={this.state.col} className="d-flex align-items-end">
+                <Grid item xs={this.state.col} className="sc_radio_button_wrapper">
                     <div className={(this.state.error ? 'sm_radio_error ' : '') + 'sm_radio_label_wrapper'}>
                         <span className="m-0">
                             <React.Fragment>

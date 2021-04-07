@@ -223,7 +223,7 @@ class HasMany extends Component {
             return (
                 <Fragment key={index.__key__}>
                     <Grid container alignItems="center" spacing={3}>
-                        <Grid item xs={1}>
+                        <Grid item xs={1} className="sc_relation_has_many_remove_item_wrapper">
                             <IconButton className="mt-3" onClick={this.removeItem(index)}>
                                 <DeleteRoundedIcon className="text-danger" />
                             </IconButton>

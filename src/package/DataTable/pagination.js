@@ -10,7 +10,6 @@ import { setDTPaginationTo } from '../Redux/action'
 import { Grid } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import './../Assets/scss/pagination.scss'
 const BootstrapInput = withStyles((theme) => ({
     root: {
         'label + &': {

@@ -17,14 +17,12 @@ const theme = createMuiTheme({
     },
     direction: 'rtl',
     typography: {
-        // fontFamily: "Shabnam",
         fontSize: 14,
     },
 })
 const jss = create({
     insertionPoint: 'jss-insertion-point',
     plugins: [...jssPreset().plugins, rtl()],
-    // insertionPoint: 'jss-insertion-point',
 })
 
 export function RTL(props) {
