@@ -1894,7 +1894,7 @@ class SmartCrudDataTable extends Component {
                             highlightOnHover
                             title="لیست اطلاعات"
                             fixedHeader={true}
-                            fixedHeaderScrollHeight="50vh"
+                            fixedHeaderScrollHeight="491px"
                             {...this.props}
                             data={this.props.smartcrud[this.state.key] ? this.props.smartcrud[this.state.key].data : []}
                             progressPending={this.props.smartcrud[this.state.key] ? !this.props.smartcrud[this.state.key].loaded : true}
