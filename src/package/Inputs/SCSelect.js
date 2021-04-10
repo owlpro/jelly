@@ -36,6 +36,9 @@ class SCSelect extends Component {
                 .then(async (response) => {
                     let data = [...response.data.results.data]
                     let options = await data.map((item) => {
+                        if (this.props.hasOwnProperty('optionLabelSelector')) {
+                            return { label: String(item[this.props.optionLabelSelector]), value: item.id }
+                        }
                         return { label: item.title || item.subtitle, value: item.id }
                     })
 

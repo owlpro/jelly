@@ -19,8 +19,20 @@ class SCMultiSelect extends Component {
             this.afterSyncOptions = () => {
                 const options = this.props.value.map((item) => {
                     let baseOption = this.state.options.filter((op) => op.value === item.id)[0]
+
+                    if (baseOption) {
+                        return {
+                            label: baseOption.label,
+                            value: item.id,
+                        }
+                    }
+
+                    if (this.props.hasOwnProperty('optionLabelSelector')) {
+                        return { label: String(item[this.props.optionLabelSelector]), value: item.id }
+                    }
+
                     return {
-                        label: baseOption ? baseOption.label : baseOption.title || baseOption.subtitle,
+                        label: baseOption.title || baseOption.subtitle,
                         value: item.id,
                     }
                 })
