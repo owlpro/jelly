@@ -4,8 +4,7 @@ import { store_configs } from './Redux/action'
 import store from './Redux/store'
 import PropTypes from 'prop-types'
 
-import { RTL } from './Components/Rtl'
-import './Assets/scss/styleLoader.scss'
+// import './Assets/scss/styleLoader.scss'
 
 /**
  * Usage :
@@ -26,18 +25,19 @@ class SmartCrudProvider extends React.Component {
     }
 
     UNSAFE_componentWillMount() {
-        document.head.innerHTML = '<!-- jss-insertion-point -->' + document.head.innerHTML
         let propsData = { ...this.props }
         delete propsData.children
         store.dispatch(store_configs(propsData))
     }
 
+    componentDidMount() {
+        require('./Assets/scss/styleLoader.scss')
+    }
+
     render() {
         return (
             <Fragment>
-                <RTL>
-                    <Dependencies />
-                </RTL>
+                <Dependencies />
                 {this.props.children}
             </Fragment>
         )

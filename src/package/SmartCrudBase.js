@@ -26,8 +26,8 @@ import { DangerAlert, SuccessAlert, WarningAlert } from './Helpers/alert'
 import { select, setToObject } from './Helpers/general'
 import SCImage from './Inputs/SCImage'
 import SCIncrements from './Inputs/SCIncrements'
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import AddIcon from '@material-ui/icons/Add';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted'
+import AddIcon from '@material-ui/icons/Add'
 class SmartCrudBase extends Component {
     state = {
         ...this.props,
@@ -510,7 +510,7 @@ class SmartCrudBase extends Component {
                             label={
                                 <div className="d-flex align-items-center">
                                     <span>{this.props.title || 'لیست اطلاعات'}</span>
-                                    <FormatListBulletedIcon />
+                                    <FormatListBulletedIcon fontSize="small" className="sc_tab_icon"/>
                                 </div>
                             }
                         />
@@ -519,7 +519,7 @@ class SmartCrudBase extends Component {
                                 label={
                                     <div className="d-flex align-items-center">
                                         <span>ایجاد</span>
-                                        <AddIcon />
+                                        <AddIcon fontSize="small" className="sc_tab_icon"/>
                                     </div>
                                 }
                             />

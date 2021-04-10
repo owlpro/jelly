@@ -16,6 +16,7 @@ class App extends Component {
                     deletable
                     // morphMapKey="Category"
                     // morphMany={['Tags']}
+                    debug
                     route={'/api/v4/terminals'}
                     columns={columns}
                     filters={filters}

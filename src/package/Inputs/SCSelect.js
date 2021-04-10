@@ -136,6 +136,7 @@ class SCSelect extends Component {
                         onChange={this.onChange}
                         value={this.state.value}
                         clearOnEscape
+                        className="sc_select_input_wrapper"
                         noOptionsText={'مورد مطابقی یافت نشد'}
                         renderInput={(params) => (
                             <TextField

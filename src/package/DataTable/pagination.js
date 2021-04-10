@@ -26,7 +26,6 @@ const BootstrapInput = withStyles((theme) => ({
         padding: '10px 26px 10px 12px',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         // Use the system font instead of the default Roboto font.
-        fontFamily: 'Shabnam',
         fontSize: 14,
         '&:focus': {
             borderRadius: 4,
@@ -151,16 +150,16 @@ class Pagination extends React.Component {
                             <span className="ml-1">تعداد در هر صفحه</span>
                             <FormControl>
                                 <Select className="selection_input_limit" value={this.state.limit} onChange={this.onChangeLimit} input={<BootstrapInput />}>
-                                    <MenuItem value={10} className="text-center">
+                                    <MenuItem value={10} className="text-center sc-pagination-limit-item">
                                         10
                                     </MenuItem>
-                                    <MenuItem value={25} className="text-center">
+                                    <MenuItem value={25} className="text-center sc-pagination-limit-item">
                                         25
                                     </MenuItem>
-                                    <MenuItem value={50} className="text-center">
+                                    <MenuItem value={50} className="text-center sc-pagination-limit-item">
                                         50
                                     </MenuItem>
-                                    <MenuItem value={100} className="text-center">
+                                    <MenuItem value={100} className="text-center sc-pagination-limit-item">
                                         100
                                     </MenuItem>
                                 </Select>

@@ -8,11 +8,11 @@ export default [
         editable: true,
     },
     {
-        selector: 'bank.name',
+        selector: 'bank_id',
         type: 'select',
         label: 'بانک متصل کننده',
         col: 4,
-        options: `/api/v4/banks`,
+        options: `/api/v4/banks?page_size=9999`,
         optionLabelSelector: 'name',
         isRequired: true,
         editable: true,

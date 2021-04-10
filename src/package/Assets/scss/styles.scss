@@ -96,9 +96,6 @@ div#main-search {
     outline: unset;
 }
 
-// .MuiMenuItem-root {
-//     font-family: 'Shabnam' !important;
-// }
 .MuiTypography-h6 {
     text-align: center;
 }
@@ -116,9 +113,6 @@ span.mui_menu_item_icon {
     font-size: 14px;
 }
 .MuiDialog-paperWidthSm {
-    // & *:not(i) {
-    //     font-family: 'Shabnam' !important;
-    // }
     direction: rtl;
     text-align: right;
     & > .MuiDialogActions-root {
@@ -173,7 +167,7 @@ span.mui_menu_item_icon {
 
 .rdt_TableBody {
     overflow-y: scroll !important;
-    min-height: 50vh;
+    min-height: 491px;
 }
 .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded::-webkit-scrollbar,
 .rdt_TableBody::-webkit-scrollbar {
@@ -272,9 +266,6 @@ span.refund_info_item {
         margin-right: 20px;
     }
 }
-.MuiList-padding {
-    padding: 0;
-}
 @keyframes miniLoadingInButton {
     0% {
         transform: scale(0);
@@ -300,9 +291,6 @@ span.refund_info_item {
     }
 }
 
-// .MuiButtonBase-root {
-//     font-family: 'Shabnam' !important;
-// }
 
 .search_address_selection {
     z-index: 1001;
@@ -1579,4 +1567,8 @@ span.dt_filters_count {
         width: 24px !important;
         height: 24px !important;
     }
+}
+
+.ml-2 {
+    margin-left: 0.2rem;
 }
