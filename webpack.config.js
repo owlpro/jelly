@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+// const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 module.exports = {
     mode: 'production',
@@ -38,5 +38,5 @@ module.exports = {
     },
     target: 'node',
     externals: [nodeExternals()],
-    plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackCleanupPlugin()],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 }
