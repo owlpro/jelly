@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-// const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 module.exports = {
     mode: 'production',
