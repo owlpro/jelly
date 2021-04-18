@@ -7,7 +7,6 @@ import axios from './axios'
 import './index.scss'
 import { createMuiTheme } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
-
 const theme = createMuiTheme({
     palette: {
         primary: blue,
