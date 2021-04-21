@@ -7,7 +7,6 @@ import hasMany from './debugging/hasMany'
 class App extends Component {
     render() {
         return (
-            <div>
                 <SmartCrud
                     title="کاربران"
                     inputs={inputs}
@@ -23,7 +22,6 @@ class App extends Component {
                     relations={['bank']}
                     // appendFilter={[['profile.name', '!=', null]]}
                 />
-            </div>
         )
     }
 }

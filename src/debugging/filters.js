@@ -1,38 +1,38 @@
 export default [
     {
-        name: 'تاریخ',
+        label: 'تاریخ',
         selector: 'created_at',
         type: 'date',
         variant: 'inline',
     },
     {
-        name: 'شماره کارت',
+        label: 'شماره کارت',
         selector: 'card_number',
         type: 'string',
     },
     {
-        name: 'شماره موبایل',
+        label: 'شماره موبایل',
         selector: 'mobile',
         type: 'string',
     },
     {
-        name: 'مبلغ',
+        label: 'مبلغ',
         selector: 'amount',
         type: 'number',
     },
     {
-        name: 'امتیاز اعطا شده',
+        label: 'امتیاز اعطا شده',
         selector: 'gift',
         type: 'number',
     },
     {
-        name: 'امتیاز هزینه شده',
+        label: 'امتیاز هزینه شده',
         selector: 'point',
         type: 'number',
     },
 
     {
-        name: 'نوع تراکنش',
+        label: 'نوع تراکنش',
         selector: 'payment_type',
         type: 'select',
         items: [

@@ -805,8 +805,9 @@ div#sc_root {
     }
     .MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.text-center.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button,
     .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated,
-    .MuiInputBase-input.MuiInput-input.MuiInputBase-inputMarginDense.MuiInput-inputMarginDense {
-        font-size: 14px;
+    .MuiInputBase-input.MuiInput-input.MuiInputBase-inputMarginDense.MuiInput-inputMarginDense,
+    .MuiListItem-root {
+        font-size: 14px !important;
     }
     .MuiInputBase-input.MuiFilledInput-input.MuiInputBase-inputMarginDense.MuiFilledInput-inputMarginDense {
         padding-right: 0;
