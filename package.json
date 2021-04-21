@@ -89,7 +89,7 @@
         "react-scripts": "4.0.3",
         "rollup": "^2.44.0",
         "sass": "^1.32.10",
-        "sass-loader": "^11.0.1",
+        "sass-loader": "7.x.x",
         "style-loader": "^2.0.0",
         "svg-url-loader": "^7.1.1",
         "web-vitals": "^1.0.1",
