@@ -4,7 +4,7 @@ import { store_configs } from './Redux/action'
 import store from './Redux/store'
 import PropTypes from 'prop-types'
 
-import './Assets/scss/styles.scss'
+import './Assets/scss/styleLoader.scss'
 
 /**
  * Usage :
