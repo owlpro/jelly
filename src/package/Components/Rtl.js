@@ -21,19 +21,11 @@ const theme = createMuiTheme({
         fontSize: 14,
     },
 })
-const jss = create({
-    insertionPoint: 'jss-insertion-point',
-    plugins: [...jssPreset().plugins, rtl()],
-})
-
 class Rtl extends Component {
     theme
     jss
 
     UNSAFE_componentWillMount() {
-        console.log(this.props.theme)
-        document.head.innerHTML = '<!-- jss-insertion-point -->' + document.head.innerHTML
-
         if (this.props.theme) {
             this.theme = this.props.theme
         } else {
@@ -64,7 +56,7 @@ class Rtl extends Component {
         return (
             <StylesProvider jss={this.jss}>
                 <ThemeProvider theme={this.theme}>
-                    <div dir="rtl">{this.props.children}</div>
+                    <div dir="rtl" id="sc_root">{this.props.children}</div>
                 </ThemeProvider>
             </StylesProvider>
         )

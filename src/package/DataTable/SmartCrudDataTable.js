@@ -46,8 +46,8 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import ProcessStatus from '../Components/ProcessStatus'
 import printStyles from '!!raw-loader!./../Assets/css/list_print.css'
 import DatatableBaseComponent from 'react-data-table-component'
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer'
+import FilterListIcon from '@material-ui/icons/FilterList'
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: false })
 
@@ -1817,7 +1817,7 @@ class SmartCrudDataTable extends Component {
                                             ),
                                         }}
                                         onChange={this.onChangeSearchInput}
-                                        margin="dense"
+                                        // margin="dense"
                                         inputRef={(el) => (this.ref.search = el)}
                                         onKeyUp={this.onSearchKeyUp}
                                         placeholder="جستجو"
@@ -1881,6 +1881,7 @@ class SmartCrudDataTable extends Component {
                                         className="mui_filter_btn mr-2"
                                         onClick={this.toggleShowFilters}
                                         startIcon={<FilterListIcon />}
+                                        disableElevation
                                     >
                                         {this.state.useFilters.length > 0 ? <span className="dt_filters_count">{this.state.useFilters.length}</span> : ''}
                                         <span> فیلتر </span>
