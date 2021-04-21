@@ -803,9 +803,20 @@ div#sc_root {
         font-size: 14px;
         text-align: right;
     }
-    .MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.text-center.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button,
-    .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated,
-    .MuiInputBase-input.MuiInput-input.MuiInputBase-inputMarginDense.MuiInput-inputMarginDense,
+    .MuiButtonBase-root,
+    .MuiListItem-root,
+    .MuiMenuItem-root,
+    .text-center.MuiMenuItem-gutters,
+    .MuiListItem-gutters,
+    .MuiListItem-button,
+    .MuiFormLabel-root,
+    .MuiInputLabel-root,
+    .MuiInputLabel-formControl,
+    .MuiInputLabel-animated,
+    .MuiInputBase-input,
+    .MuiInput-input,
+    .MuiInputBase-inputMarginDense,
+    .MuiInput-inputMarginDense,
     .MuiListItem-root {
         font-size: 14px !important;
     }
