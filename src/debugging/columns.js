@@ -2,7 +2,8 @@ export default [
     {
         name: 'نام',
         selector: 'title',
-        sortable: false,
+        sortableFilter: true,
+        isDefaultSort: 'desc',
         grow: 2,
     },
     {
@@ -28,5 +29,11 @@ export default [
         selector: 'imei',
         sortable: false,
         grow: 3,
+    },
+    {
+        name: 'تاریخ',
+        selector: 'created_at',
+        sortableFilter: true,
+        isDefaultSort: 'desc',
     },
 ]

@@ -1817,7 +1817,7 @@ class SmartCrudDataTable extends Component {
                                             ),
                                         }}
                                         onChange={this.onChangeSearchInput}
-                                        // margin="dense"
+                                        margin="dense"
                                         inputRef={(el) => (this.ref.search = el)}
                                         onKeyUp={this.onSearchKeyUp}
                                         placeholder="جستجو"
